@@ -1,9 +1,5 @@
-import { useCallback, useContext, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
 import CardNav from './CardNav';
 import defaultLogo from '../../../assets/logos/Logo-full.svg';
-import { useClientIntake } from '../../../context/ClientIntakeContext';
-import { AuthContext } from '../../../context/AuthContext';
 
 const defaultItems = [
   {
@@ -13,7 +9,7 @@ const defaultItems = [
     links: [
       { label: 'Home', ariaLabel: 'Home Page', href: '/' },
       { label: 'About Us', ariaLabel: 'About Us', href: '/about' }
-      
+
     ]
   },
   {
@@ -36,82 +32,21 @@ const AppCardNav = ({
   buttonBgColor = '#082658',
   buttonTextColor = '#fff',
   ease = 'power3.out',
-  onGetStarted,
-  ctaLabel = 'Get Started',
+  ctaLabel = 'Get In Touch',
+  ctaHref = 'mailto:support@breakwaters.co.za',
   rightContent,
   ...rest
 }) => {
-  const { openClientIntake, hasRegisteredBusiness } = useClientIntake();
-  const { user, logout } = useContext(AuthContext);
-  const navigate = useNavigate();
-
-  const handleGetStarted = useCallback(() => {
-    if (user?.role === 'recruitment_officer') {
-      navigate('/rod');
-    } else if (typeof onGetStarted === 'function') {
-      onGetStarted();
-    } else {
-      openClientIntake();
-    }
-  }, [user, navigate, onGetStarted, openClientIntake]);
-
-  const handleLogout = useCallback(() => {
-    logout();
-    navigate('/');
-  }, [logout, navigate]);
-
-  const computedRightContent = useMemo(() => {
-    if (rightContent) {
-      return rightContent;
-    }
-
-    const ctaText = hasRegisteredBusiness ? 'View Company Profile' : ctaLabel;
-    const primaryButton = hasRegisteredBusiness ? (
-      <a
-        className="card-nav-cta-button"
-        style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
-        href="/business/profile"
-        aria-label="View company profile"
-      >
-        {ctaText}
-      </a>
-    ) : (
-      <button
-        type="button"
-        className="card-nav-cta-button"
-        style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
-        onClick={handleGetStarted}
-      >
-        {ctaText}
-      </button>
-    );
-
-    if (!user) {
-      return primaryButton;
-    }
-
-    return (
-      <div className="card-nav-action-group">
-        {primaryButton}
-        <button
-          type="button"
-          className="card-nav-secondary-button"
-          onClick={handleLogout}
-        >
-          Logout
-        </button>
-      </div>
-    );
-  }, [
-    rightContent,
-    user,
-    buttonBgColor,
-    buttonTextColor,
-    handleGetStarted,
-    hasRegisteredBusiness,
-    ctaLabel,
-    handleLogout,
-  ]);
+  const computedRightContent = rightContent || (
+    <a
+      className="card-nav-cta-button"
+      style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
+      href={ctaHref}
+      aria-label={ctaLabel}
+    >
+      {ctaLabel}
+    </a>
+  );
 
   return (
     <CardNav
@@ -123,7 +58,6 @@ const AppCardNav = ({
       buttonBgColor={buttonBgColor}
       buttonTextColor={buttonTextColor}
       ease={ease}
-      onCtaClick={handleGetStarted}
       rightContent={computedRightContent}
       {...rest}
     />
