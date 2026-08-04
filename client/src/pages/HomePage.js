@@ -1,13 +1,12 @@
-import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../styling/home.css";
 import AppCardNav from "../components/ui/layout/AppCardNav";
 import heroWave from "../assets/svgs/Hero-wave.svg";
-import { AuthContext } from "../context/AuthContext";
-import { useClientIntake } from "../context/ClientIntakeContext";
 import Footer from "../components/ui/layout/Footer";
 import PageMeta from "../components/seo/PageMeta";
 
 const HERO_TITLE = "We Break Barriers\nfor your success.";
+const CONTACT_EMAIL = "mailto:support@breakwaters.co.za";
 const HOW_IT_WORKS_STEPS = [
   {
     step: "1. Submit",
@@ -28,43 +27,10 @@ const HOW_IT_WORKS_STEPS = [
 
 
 export default function HomePage() {
-  const { user } = useContext(AuthContext);
-  const {
-    openClientIntake,
-    openBusinessIntake,
-    hasSubmitted,
-    hasRegisteredBusiness,
-  } = useClientIntake();
   const howItWorksRef = useRef(null);
   const aboutBreakwatersRef = useRef(null);
   const [howItWorksVisible, setHowItWorksVisible] = useState(false);
   const [aboutVisible, setAboutVisible] = useState(false);
-
-  const handleNavCtaClick = useCallback(() => {
-    openClientIntake();
-  }, [openClientIntake]);
-
-  const handleResumeClick = useCallback(
-    (event) => {
-      event.preventDefault();
-      openClientIntake();
-    },
-    [openClientIntake]
-  );
-
-  const handleBusinessClick = useCallback(() => {
-    openBusinessIntake();
-  }, [openBusinessIntake]);
-
-  const navCtaLabel = user
-    ? user.role === 'recruitment_officer'
-      ? "Dashboard"
-      : hasRegisteredBusiness
-        ? "View Company Profile"
-        : hasSubmitted
-          ? "Resume Sent"
-          : "Get Started"
-    : "Sign Up / Sign In";
 
   useEffect(() => {
     if (typeof window === "undefined" || typeof IntersectionObserver === "undefined") {
@@ -104,10 +70,7 @@ export default function HomePage() {
       />
       <section className="hero-section noise">
         <div className="hero-content">
-          <AppCardNav
-            ctaLabel={navCtaLabel}
-            onGetStarted={handleNavCtaClick}
-          />
+          <AppCardNav />
           <h1 className="hero-title" data-text={HERO_TITLE}>
             <span>We Break Barriers</span>
             <span>for your success.</span>
@@ -118,20 +81,12 @@ export default function HomePage() {
           </p>
 
           <div className="hero-cta-container">
-            <button
-              type="button"
-              className="hero-cta"
-              onClick={handleResumeClick}
-            >
+            <a href={CONTACT_EMAIL} className="hero-cta">
               Submit your resume
-            </button>
-            <button
-              type="button"
-              className="hero-cta hero-cta--white"
-              onClick={handleBusinessClick}
-            >
+            </a>
+            <a href={CONTACT_EMAIL} className="hero-cta hero-cta--white">
               Register your business
-            </button>
+            </a>
           </div>
         </div>
         <div className="hero-wave-accent" aria-hidden="true" />
@@ -214,13 +169,9 @@ export default function HomePage() {
                   lifting. We connect you with verified companies that match
                   your goals and expertise.
                 </p>
-                <button
-                  type="button"
-                  className="panel-cta"
-                  onClick={handleResumeClick}
-                >
+                <a href={CONTACT_EMAIL} className="panel-cta">
                   Submit Your CV
-                </button>
+                </a>
               </div>
               <div className="career-journey-panel__accent" aria-hidden="true">
                 <div className="career-journey-panel__texture" />

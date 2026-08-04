@@ -1,11 +1,8 @@
-import { useCallback, useContext } from "react";
 import "../styling/about.css";
 import AppCardNav from "../components/ui/layout/AppCardNav";
 import MissionSection from "../components/sections/MissionSection";
 import TeamShowcase from "../components/about/TeamShowcase";
 import { TEAM_SHOWCASE_MEMBERS } from "../components/sections/MissionSection";
-import { AuthContext } from "../context/AuthContext";
-import { useClientIntake } from "../context/ClientIntakeContext";
 import PageMeta from "../components/seo/PageMeta";
 
 const INITIAL_MISSION_LINES = ["What we do", "and why we do it."];
@@ -34,21 +31,6 @@ const MISSION_ENTRIES = [
 ];
 
 export default function AboutUsPage() {
-  const { user } = useContext(AuthContext);
-  const { openClientIntake, hasSubmitted } = useClientIntake();
-
-  const handleNavCtaClick = useCallback(() => {
-    openClientIntake();
-  }, [openClientIntake]);
-
-  const navCtaLabel = user
-    ? user.role === "recruitment_officer"
-      ? "Dashboard"
-      : hasSubmitted
-        ? "Resume Sent"
-        : "Get Started"
-    : "Sign Up / Sign In";
-
   return (
     <main className="about-page">
       <PageMeta
@@ -56,7 +38,7 @@ export default function AboutUsPage() {
         description="Discover the Breakwaters Recruitment team's mission to champion people-first hiring with human-led reviews, verified partners, and transparent recruitment."
         canonical="https://breakwatersrecruitment.co.za/about"
       />
-      <AppCardNav ctaLabel={navCtaLabel} onGetStarted={handleNavCtaClick} />
+      <AppCardNav />
       <MissionSection id="about-mission" entries={MISSION_ENTRIES} />
     </main>
   );
