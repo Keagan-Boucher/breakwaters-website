@@ -17,6 +17,8 @@ export const emailVanessa = "vanessa@breakwatersrecruiting.co.za";
 export const emailRecruits = emailVanessa;
 
 export const linkedinUrl = "https://www.linkedin.com/company/breakwaters-recruiting-agency/";
+// TODO: Vanessa's personal LinkedIn profile URL (used for the founder Person in JSON-LD)
+export const founderLinkedinUrl = "";
 // TODO: full Facebook page URL, e.g. "https://www.facebook.com/breakwatersrecruiting"
 export const facebookUrl = "";
 // TODO: WhatsApp number, digits only, country code first, no + or spaces, e.g. "27823703603"

@@ -54,7 +54,7 @@ contact form. Nothing else runs server-side.
 
 ```
 client/
-  index.html                 template; site-wide meta + JSON-LD; <!--app-head--> / <!--app-html--> placeholders
+  index.html                 template; site-wide meta; <!--app-head--> / <!--app-html--> placeholders
   vite.config.js             outDir build, es2022, /contact.php proxy → :8001, preview serves prerendered routes
   scripts/prerender.mjs      route → static HTML; fills sameAs, font preloads, breadcrumbs
   public/                    copied verbatim: .htaccess, contact.php, robots, sitemap, og-image, icons
@@ -120,7 +120,7 @@ cd client && npm run build && npm run preview # :4173, prerendered, what Hosting
 ## Still TODO (owner input needed)
 
 In `src/config/site.js` (UI hides the feature until filled):
-`facebookUrl`, `whatsappE164`, `formRecipient` (+ the same
+`facebookUrl`, `whatsappE164`, `founderLinkedinUrl`, `formRecipient` (+ the same
 `FORM_RECIPIENT` in `contact.php`). After deploy: create the
 `no-reply@` mailbox and enable SPF/DKIM on Hostinger.
 
