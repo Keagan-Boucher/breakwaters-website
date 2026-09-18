@@ -1,117 +1,41 @@
 import "../styling/content-pages.css";
-import AppCardNav from "../components/ui/layout/AppCardNav";
-import Footer from "../components/ui/layout/Footer";
 import PageMeta from "../components/seo/PageMeta";
 import Reveal from "../components/ui/common/Reveal";
-import { emailRecruits, emailVanessa, phoneDisplay, phoneE164, siteUrl } from "../config/site";
-
-const ROUTING_ROWS = [
-  {
-    label: "Job seekers",
-    content: (
-      <p>
-        Email{" "}
-        <a href={`mailto:${emailRecruits}`}>{emailRecruits}</a>{" "}
-        to get started in your job search.
-      </p>
-    ),
-  },
-  {
-    label: "Businesses",
-    content: (
-      <p>
-        Email{" "}
-        <a href={`mailto:${emailVanessa}`}>{emailVanessa}</a>{" "}
-        to enquire about us finding you talent.
-      </p>
-    ),
-  },
-];
-
-const CONTACT_ROWS = [
-  {
-    label: "Email",
-    content: (
-      <p>
-        <a href={`mailto:${emailVanessa}`}>{emailVanessa}</a>
-        <br />
-        <a href={`mailto:${emailRecruits}`}>{emailRecruits}</a>
-      </p>
-    ),
-  },
-  {
-    label: "Phone",
-    content: (
-      <p>
-        <a href={`tel:${phoneE164}`}>{phoneDisplay}</a>
-      </p>
-    ),
-  },
-  {
-    label: "LinkedIn",
-    content: <p>Breakwaters Recruiting</p>,
-  },
-];
+import ContactDetails from "../components/ui/common/ContactDetails";
+import { locality } from "../config/site";
 
 export default function ContactPage() {
   return (
-    <main className="cx-page">
-      <PageMeta
-        title="Contact Us | Breakwaters Recruiting"
-        description="Get in touch with Breakwaters Recruiting by email or phone, we'd love to hear from you."
-        canonical={`${siteUrl}/contact`}
-      />
-      <AppCardNav />
+    <>
+      <PageMeta path="/contact" />
 
-      <header className="cx-header cx-header--cream">
-        <div className="cx-header__inner">
-          <h1 className="cx-title">Get in Touch</h1>
+      <header className="cx-header surface-cream">
+        <div className="container container--narrow cx-header__inner">
+          <p className="cx-eyebrow">Contact · {locality}</p>
+          <h1>Get in touch</h1>
           <p className="cx-lede">
-            We'd love to hear from you. No forms, no ticketing system, just a
-            real person on the other end.
+            Email, call or message us directly, or leave your details in the short form below.
+            Either way it lands with a real person, not a ticket queue.
           </p>
         </div>
       </header>
 
-      <section className="cx-section cx-section--white">
-        <div className="cx-section__inner">
-          <Reveal className="cx-section__head">
-            <h2 className="cx-title cx-title--section">Not Sure Who to Email?</h2>
+      <section className="cx-section" aria-labelledby="direct-title">
+        <div className="container container--narrow cx-contact">
+          <Reveal className="cx-contact__details">
+            <h2 id="direct-title">Reach us directly</h2>
+            <p>Job seekers and employers go to different inboxes so the right person answers first.</p>
+            <ContactDetails />
           </Reveal>
-          <div className="cx-list cx-list--labelled">
-            {ROUTING_ROWS.map(({ label, content }) => (
-              <div className="cx-row" key={label}>
-                <span className="cx-row__index">{label}</span>
-                <div className="cx-row__body">{content}</div>
-              </div>
-            ))}
-          </div>
+          <Reveal delay={80}>
+            {/* contact form lands here */}
+          </Reveal>
         </div>
       </section>
 
-      <section className="cx-section cx-section--khaki">
-        <Reveal className="cx-section__inner">
-          <p className="cx-statement">Connect. Collaborate. Deliver.</p>
-        </Reveal>
+      <section className="cx-section surface-khaki">
+        <Reveal className="container"><p className="cx-statement">Connect. Collaborate. Deliver.</p></Reveal>
       </section>
-
-      <section className="cx-section cx-section--cream">
-        <div className="cx-section__inner">
-          <Reveal className="cx-section__head">
-            <h2 className="cx-title cx-title--section">Reach Us Directly</h2>
-          </Reveal>
-          <div className="cx-list cx-list--labelled">
-            {CONTACT_ROWS.map(({ label, content }) => (
-              <div className="cx-row" key={label}>
-                <span className="cx-row__index">{label}</span>
-                <div className="cx-row__body">{content}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <Footer />
-    </main>
+    </>
   );
 }

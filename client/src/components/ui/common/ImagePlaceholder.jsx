@@ -1,12 +1,12 @@
 import { FiImage } from "react-icons/fi";
 
-export default function ImagePlaceholder({ label, ratio = "3 / 4", className = "" }) {
+// TODO: replace with a real portrait (e.g. src/assets/images/founder-vanessa-boucher.webp)
+// and swap the frame for <img width height loading="lazy" alt="...">.
+export default function ImagePlaceholder({ label }) {
   return (
-    <div className={`cx-frame-wrap ${className}`}>
-      <div className="cx-frame" style={{ aspectRatio: ratio }} aria-hidden="true">
-        <FiImage />
-      </div>
-      {label ? <p className="cx-frame__caption">{label}</p> : null}
-    </div>
+    <figure className="cx-figure">
+      <div className="cx-figure__frame" aria-hidden="true"><FiImage /></div>
+      {label ? <figcaption>{label}</figcaption> : null}
+    </figure>
   );
 }

@@ -1,13 +1,10 @@
+import { Link } from "react-router-dom";
 import "../styling/content-pages.css";
-import AppCardNav from "../components/ui/layout/AppCardNav";
-import Footer from "../components/ui/layout/Footer";
 import PageMeta from "../components/seo/PageMeta";
 import Reveal from "../components/ui/common/Reveal";
-import { emailRecruits, siteUrl } from "../config/site";
+import { emailRecruits } from "../config/site";
 
-const CV_EMAIL = `mailto:${emailRecruits}`;
-
-const EXPECTATIONS = [
+const EXPECT = [
   "A supportive, human approach",
   "Honest and transparent communication",
   "Opportunities that align with your goals",
@@ -16,70 +13,51 @@ const EXPECTATIONS = [
 
 export default function JobSeekersPage() {
   return (
-    <main className="cx-page">
-      <PageMeta
-        title="For Job Seekers | Breakwaters Recruiting"
-        description="Breakwaters Recruiting takes a personal approach to job hunting. Honest communication, guidance, and opportunities that actually fit your goals."
-        canonical={`${siteUrl}/job-seekers`}
-      />
-      <AppCardNav />
+    <>
+      <PageMeta path="/job-seekers" />
 
-      <header className="cx-header cx-header--khaki">
-        <div className="cx-header__inner">
-          <h1 className="cx-title">Find More Than Just Your Next Job</h1>
+      <header className="cx-header surface-khaki">
+        <div className="container container--narrow cx-header__inner">
+          <p className="cx-eyebrow">For job seekers</p>
+          <h1>SAP, Oracle and IT jobs. Find more than your next role.</h1>
           <p className="cx-lede">
-            We know that looking for a new role can feel overwhelming. That's
-            why we take a more personal approach, getting to know you, your
-            goals, and what really matters to you.
+            Looking for a new role can feel overwhelming. We take a more personal approach: getting to
+            know you, your goals and what really matters to you before matching you with South African
+            employers who need your skills.
           </p>
           <p className="cx-lede">
-            To get started, email{" "}
-            <a href={CV_EMAIL} style={{ color: "inherit" }}>
-              {emailRecruits}
-            </a>{" "}
-            and our team will guide you through the process of finding your
-            next job.
+            To get started, email your CV to <a href={`mailto:${emailRecruits}`}>{emailRecruits}</a> or{" "}
+            <Link to="/contact">use the contact form</Link>.
           </p>
         </div>
       </header>
 
-      <section className="cx-section cx-section--cream">
-        <div className="cx-section__inner">
-          <Reveal className="cx-section__head">
-            <h2 className="cx-title cx-title--section">What You Can Expect</h2>
-          </Reveal>
-          <div className="cx-list cx-list--compact">
-            {EXPECTATIONS.map((item, index) => (
-              <div className="cx-row" key={item}>
-                <span className="cx-row__index">{String(index + 1).padStart(2, "0")}</span>
-                <div className="cx-row__body">
-                  <p>{item}</p>
-                </div>
-              </div>
+      <section className="cx-section surface-cream" aria-labelledby="expect-title">
+        <div className="container container--text">
+          <Reveal className="cx-section__head"><h2 id="expect-title">What you can expect</h2></Reveal>
+          <ol className="cx-list cx-list--compact cx-list--plain">
+            {EXPECT.map((item, i) => (
+              <li className="cx-row" key={item}>
+                <span className="cx-row__index" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+                <div className="cx-row__body"><p>{item}</p></div>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
-      <section className="cx-section cx-section--navy">
-        <Reveal className="cx-section__inner">
-          <div className="cx-cta">
-            <h2 className="cx-title cx-title--section">Stay Connected</h2>
-            <p>
-              You're not just another CV to us. We're here to help you find
-              the right opportunity, one that fits your skills, your
-              lifestyle, and your future.
-            </p>
+      <section className="cx-section surface-navy" aria-labelledby="cta-title">
+        <div className="container">
+          <Reveal className="cx-cta">
+            <h2 id="cta-title">Send us your CV</h2>
+            <p>You're not just another CV to us. We'll help you find a role that fits your skills, your lifestyle and your future.</p>
             <div className="cx-cta__actions">
-              <a href={CV_EMAIL} className="cx-btn-pill">
-                Email {emailRecruits}
-              </a>
+              <a href={`mailto:${emailRecruits}`} className="btn btn--primary">Email {emailRecruits}</a>
+              <Link to="/contact" className="btn btn--secondary">Contact us</Link>
             </div>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
       </section>
-
-      <Footer />
-    </main>
+    </>
   );
 }

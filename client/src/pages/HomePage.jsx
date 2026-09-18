@@ -1,190 +1,109 @@
-import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styling/home.css";
-import AppCardNav from "../components/ui/layout/AppCardNav";
+import "../styling/content-pages.css";
 import heroWave from "../assets/svgs/Hero-wave.svg";
-import Footer from "../components/ui/layout/Footer";
 import PageMeta from "../components/seo/PageMeta";
-import { siteUrl } from "../config/site";
+import Reveal from "../components/ui/common/Reveal";
+import ContactDetails from "../components/ui/common/ContactDetails";
+import { locality } from "../config/site";
 
-const HERO_TITLE = "We Break Barriers\nfor your success.";
-const HOW_IT_WORKS_STEPS = [
-  {
-    step: "1. Reach Out",
-    client: "Email us your CV and a bit about what you're after.",
-    company: "Email us about the talent you're looking for.",
-  },
-  {
-    step: "2. Review",
-    client: "Our team personally reviews your profile.",
-    company: "We source and shortlist candidates for you.",
-  },
-  {
-    step: "3. Connect",
-    client: "Get matched and contacted directly.",
-    company: "Review candidates and schedule interviews.",
-  },
+const HERO_TITLE = "We break barriers\nfor your success.";
+
+const STEPS = [
+  { step: "Reach out", seeker: "Send us your CV and a few lines about what you're after.", employer: "Tell us about the role and the kind of person you need." },
+  { step: "Review", seeker: "A recruiter reads your profile personally, not a parser.", employer: "We source and shortlist candidates from a network built over years." },
+  { step: "Connect", seeker: "You're matched and contacted directly.", employer: "You review the shortlist and schedule interviews." },
 ];
 
-
 export default function HomePage() {
-  const howItWorksRef = useRef(null);
-  const aboutBreakwatersRef = useRef(null);
-  const [howItWorksVisible, setHowItWorksVisible] = useState(false);
-  const [aboutVisible, setAboutVisible] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === "undefined" || typeof IntersectionObserver === "undefined") {
-      setHowItWorksVisible(true);
-      setAboutVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.target === howItWorksRef.current) {
-            setHowItWorksVisible(entry.isIntersecting);
-          } else if (entry.target === aboutBreakwatersRef.current) {
-            setAboutVisible(entry.isIntersecting);
-          }
-        });
-      },
-      {
-        threshold: 0.25,
-        rootMargin: "0px 0px -10%",
-      }
-    );
-
-    const targets = [howItWorksRef.current, aboutBreakwatersRef.current].filter(Boolean);
-    targets.forEach((element) => observer.observe(element));
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <main className="home-page">
-      <PageMeta
-        title="Breakwaters Recruiting | Human-Led Talent Matching"
-        description="Breakwaters Recruiting connects South African businesses with exceptional, niche talent through a personal, human-centered recruitment process."
-        canonical={`${siteUrl}/`}
-      />
-      <section className="hero-section noise">
-        <div className="hero-content">
-          <AppCardNav />
-          <h1 className="hero-title" data-text={HERO_TITLE}>
-            <span>We Break Barriers</span>
+    <>
+      <PageMeta path="/" />
+
+      <section className="hero" aria-labelledby="hero-title">
+        <div className="container hero__inner">
+          <h1 id="hero-title" className="hero__title" data-text={HERO_TITLE}>
+            <span>We break barriers</span>
             <span>for your success.</span>
           </h1>
-
-          <p className="hero-subtext">
-            Connecting companies with top talent and talent with top companies!
+          <p className="hero__lede">
+            A human-led recruitment agency in {locality}, South Africa. We connect
+            companies with SAP, Oracle and IT talent, and talent with the right companies.
           </p>
-
-          <div className="hero-cta-container">
-            <Link to="/job-seekers" className="hero-cta">
-              I'm Looking for a Job
-            </Link>
-            <Link to="/services" className="hero-cta hero-cta--white">
-              I'm Looking for Talent
-            </Link>
+          <div className="hero__actions">
+            <Link to="/job-seekers" className="btn btn--primary">I'm looking for a job</Link>
+            <Link to="/services" className="btn btn--secondary">I'm looking for talent</Link>
           </div>
         </div>
-        <div className="hero-wave-accent" aria-hidden="true" />
-        <img
-          src={heroWave}
-          alt=""
-          className="hero-wave"
-          decoding="async"
-          aria-hidden="true"
-        />
+        <div className="hero__waves" aria-hidden="true" />
+        <img src={heroWave} alt="" className="hero__crest" width="520" height="520" decoding="async" aria-hidden="true" />
       </section>
 
-      <div className="home-gradient-flow noise">
-        <section
-          ref={howItWorksRef}
-          className={`home-section how-it-works ${
-            howItWorksVisible ? "home-section--visible" : ""
-          }`}
-        >
-          <div className="home-section__inner">
-            <h2 className="section-title">
-              Human-led matches in three simple steps
-            </h2>
-            <p className="section-lead">
-              From the first hello to the final interview, every connection is
-              guided by experienced recruiters who know people matter most.
+      <section className="cx-section" aria-labelledby="how-title">
+        <div className="container container--narrow">
+          <Reveal className="cx-section__head">
+            <h2 id="how-title">Human-led matches in three steps</h2>
+            <p>From the first hello to the final interview, every connection is guided by a recruiter who knows people matter most.</p>
+          </Reveal>
+          <ol className="cx-list cx-list--plain">
+            {STEPS.map(({ step, seeker, employer }, i) => (
+              <Reveal as="li" className="cx-row" delay={i * 60} key={step}>
+                <span className="cx-row__index" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+                <div className="cx-row__body">
+                  <h3>{step}</h3>
+                  <dl className="cx-pair">
+                    <div><dt>Job seeker</dt><dd>{seeker}</dd></div>
+                    <div><dt>Employer</dt><dd>{employer}</dd></div>
+                  </dl>
+                </div>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="cx-section surface-cream" aria-labelledby="why-title">
+        <div className="container container--text">
+          <Reveal className="cx-prose">
+            <h2 id="why-title">Recruitment with heart, precision and trust</h2>
+            <p>
+              Breakwaters Recruiting was built on real experience, not algorithms. Every CV is
+              personally reviewed, so every match benefits both sides.
             </p>
+            <p>
+              With deep roots in SAP, Oracle and the broader IT space, and a trusted network built
+              over many years, we do recruitment with care, resilience and genuine connection.
+            </p>
+            <p><Link to="/about">Read our story</Link></p>
+          </Reveal>
+        </div>
+      </section>
 
-            <div className="how-it-works__grid">
-              {HOW_IT_WORKS_STEPS.map(({ step, client, company }) => (
-                <article className="how-it-works__item" key={step}>
-                  <header className="how-it-works__item-header">
-                    <span className="how-it-works__badge">{step}</span>
-                  </header>
-                  <div className="how-it-works__roles">
-                    <div className="how-it-works__role">
-                      <h3>Client</h3>
-                      <p>{client}</p>
-                    </div>
-                    <div className="how-it-works__role">
-                      <h3>Company</h3>
-                      <p>{company}</p>
-                    </div>
-                  </div>
-                </article>
-              ))}
+      <section className="cx-section surface-navy" aria-labelledby="cta-title">
+        <div className="container">
+          <Reveal className="cx-cta">
+            <h2 id="cta-title">Take the first step</h2>
+            <p>Send us your CV, or tell us who you're looking for. We'll do the heavy lifting.</p>
+            <div className="cx-cta__actions">
+              <Link to="/job-seekers" className="btn btn--primary">Submit your CV</Link>
+              <Link to="/services" className="btn btn--secondary">Find talent</Link>
             </div>
-          </div>
-        </section>
+          </Reveal>
+        </div>
+      </section>
 
-        <div className="home-section-divider" aria-hidden="true" />
-
-        <section
-          ref={aboutBreakwatersRef}
-          className={`home-section about-breakwaters ${
-            aboutVisible ? "home-section--visible" : ""
-          }`}
-        >
-          <div className="home-section__inner">
-            <h2 className="section-title">
-              Recruitment with heart, precision, and trust
-            </h2>
-            <div className="about-breakwaters__content">
-              <p>
-                Breakwaters Recruiting was built on real experience, not
-                algorithms. Every CV is personally reviewed by our team,
-                ensuring every match benefits both sides.
-              </p>
-              <p>
-                With deep roots in SAP, Oracle, and the broader IT space, and
-                a trusted network built over many years, we&apos;re
-                redefining recruitment for care, resilience, and genuine
-                connection.
-              </p>
-            </div>
-
-            <div className="career-journey-panel">
-              <div className="career-journey-panel__copy">
-                <h3>Take the first step in your career journey.</h3>
-                <p>
-                  Send us your CV, and let our team do the heavy lifting. We
-                  connect you with verified companies that match your goals
-                  and expertise.
-                </p>
-                <Link to="/job-seekers" className="panel-cta">
-                  Submit Your CV
-                </Link>
-              </div>
-              <div className="career-journey-panel__accent" aria-hidden="true">
-                <div className="career-journey-panel__texture" />
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <Footer />
-    </main>
+      <section className="cx-section" aria-labelledby="contact-title">
+        <div className="container container--narrow cx-contact">
+          <Reveal className="cx-prose">
+            <h2 id="contact-title">Talk to a person</h2>
+            <p>Email, call or message us directly, or use the short form on the contact page and we'll come back to you.</p>
+            <p><Link to="/contact" className="btn btn--secondary">Go to the contact page</Link></p>
+          </Reveal>
+          <Reveal className="cx-contact__details" delay={80}>
+            <ContactDetails />
+          </Reveal>
+        </div>
+      </section>
+    </>
   );
 }

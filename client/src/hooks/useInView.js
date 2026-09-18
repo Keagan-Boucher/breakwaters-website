@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function useInView(options) {
+// Visible-once observer. Anything already at or above the viewport when the
+// observer attaches counts as visible, so a reload mid-page never hides content.
+export default function useInView() {
   const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -10,17 +12,15 @@ export default function useInView(options) {
       setIsVisible(true);
       return undefined;
     }
-
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
+      if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
         setIsVisible(true);
         observer.disconnect();
       }
-    }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px", ...options });
-
+    }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
     observer.observe(node);
     return () => observer.disconnect();
-  }, [options]);
+  }, []);
 
   return [ref, isVisible];
 }

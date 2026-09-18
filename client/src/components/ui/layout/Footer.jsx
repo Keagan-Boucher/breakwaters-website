@@ -1,35 +1,55 @@
-import { Link } from 'react-router-dom';
-import '../../../styling/Footer.css';
-import Logo from '../common/LogoMark';
-import { emailRecruits, phoneDisplay, phoneE164 } from '../../../config/site';
+import { Link } from "react-router-dom";
+import { FaLinkedinIn, FaFacebookF } from "react-icons/fa6";
+import "../../../styling/Footer.css";
+import Logo from "../common/LogoMark";
+import { emailRecruits, emailVanessa, phoneDisplay, phoneE164, linkedinUrl, facebookUrl, locality, region } from "../../../config/site";
+
+const SOCIALS = [
+  { name: "LinkedIn", url: linkedinUrl, Icon: FaLinkedinIn },
+  { name: "Facebook", url: facebookUrl, Icon: FaFacebookF },
+].filter((s) => s.url);
 
 export default function Footer() {
   return (
     <footer className="footer">
-      <div className="footer__inner">
+      <div className="container">
         <div className="footer__top">
-          <nav className="footer__links" aria-label="Footer navigation">
-            <Link to="/">Home</Link>
-            <Link to="/about">About us</Link>
-            <Link to="/services">Services</Link>
-            <Link to="/job-seekers">Job Seekers</Link>
-            <Link to="/contact">Contact</Link>
-          </nav>
-          <div className="footer__logo" aria-hidden="true">
-            <Logo className="footer__logo-svg" focusable="false" />
+          <div className="footer__brand">
+            <Logo />
+            <p>Human-led recruitment for SAP, Oracle and IT teams. {locality}, {region}.</p>
           </div>
-          <div className="footer__contact">
-            <p>
-              Email:{' '}
-              <a href={`mailto:${emailRecruits}`}>{emailRecruits}</a>
-            </p>
-            <p>
-              Phone:{' '}
-              <a href={`tel:${phoneE164}`}>{phoneDisplay}</a>
-            </p>
-            <p>LinkedIn: Breakwaters Recruiting</p>
+
+          <nav aria-label="Footer">
+            <ul className="footer__links">
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/about">About</Link></li>
+              <li><Link to="/services">Services</Link></li>
+              <li><Link to="/job-seekers">Job seekers</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
+            </ul>
+          </nav>
+
+          <div>
+            <dl className="footer__contact">
+              <dt>Job seekers</dt>
+              <dd><a href={`mailto:${emailRecruits}`}>{emailRecruits}</a></dd>
+              <dt>Employers</dt>
+              <dd><a href={`mailto:${emailVanessa}`}>{emailVanessa}</a></dd>
+              <dt>Phone</dt>
+              <dd><a href={`tel:${phoneE164}`}>{phoneDisplay}</a></dd>
+            </dl>
+            {SOCIALS.length > 0 && (
+              <div className="footer__social">
+                {SOCIALS.map(({ name, url, Icon }) => (
+                  <a key={name} href={url} target="_blank" rel="noopener noreferrer" aria-label={`Breakwaters Recruiting on ${name}`}>
+                    <Icon aria-hidden="true" />
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
         </div>
+
         <div className="footer__bottom">
           <p>© {new Date().getFullYear()} Breakwaters Recruiting. All rights reserved.</p>
         </div>
