@@ -11,9 +11,11 @@
 declare(strict_types=1);
 
 const SITE_DOMAIN     = 'breakwatersrecruiting.co.za';
-const EMAIL_RECRUITS  = 'vanessa@breakwatersrecruiting.co.za';    // TEMPORARY: recruits@ not set up yet; job seekers go to Vanessa too
-const EMAIL_VANESSA   = 'vanessa@breakwatersrecruiting.co.za';    // employers
-const FORM_RECIPIENT  = '';                                        // TODO: fallback inbox for "Other"; empty => EMAIL_RECRUITS
+// All form submissions currently go to one inbox (owner request, 2026-09-18).
+// Note the domain: breakwatersrecruitMENT, not the site's breakwatersrecruitING.
+const EMAIL_RECRUITS  = 'recruits@breakwatersrecruitment.co.za';  // job seekers
+const EMAIL_VANESSA   = 'recruits@breakwatersrecruitment.co.za';  // employers
+const FORM_RECIPIENT  = 'recruits@breakwatersrecruitment.co.za';  // "Other"
 const FROM_ADDRESS    = 'no-reply@breakwatersrecruiting.co.za';   // must exist on the Hostinger mailbox/SPF for delivery
 
 const RATE_LIMIT      = 5;        // submissions

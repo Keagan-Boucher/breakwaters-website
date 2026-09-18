@@ -101,6 +101,10 @@ Focus ring is `--focus` (navy-400 on light, cream on navy), 3px, offset 3px.
   `vanessa@`, other → `FORM_RECIPIENT` (falls back to `recruits@`).
 - Nothing is stored; the email is the record.
 - The addresses in `contact.php` duplicate `config/site.js` — keep in sync.
+  Currently all three routes in `contact.php` go to
+  `recruits@breakwatersrecruitment.co.za` (note: recruit**ment**, a different
+  domain from the site) by owner request; the site itself displays only
+  `vanessa@` until `recruits@breakwatersrecruiting.co.za` exists.
 
 ## Local dev
 
