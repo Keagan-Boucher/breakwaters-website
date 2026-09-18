@@ -1,11 +1,15 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import { hydrateRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+// Marks that JS is running so scroll-reveal styles may apply (see content-pages.css).
+document.documentElement.classList.add("js");
+
+hydrateRoot(
+  document.getElementById("root"),
   <React.StrictMode>
     <BrowserRouter>
       <App />
