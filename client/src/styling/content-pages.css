@@ -1,5 +1,5 @@
 /* Editorial system shared by every page: plain-language page header,
-   hairline-divided row lists, rule-divided columns, flat colour bands for
+   audience lanes, bento, sticky splits, flat colour bands for
    statements and CTAs. Colours come from the surface-* tokens in index.css. */
 
 /* ---------- Page header ---------- */
@@ -15,14 +15,6 @@
   display: flex;
   flex-direction: column;
   gap: var(--sp-5);
-}
-
-.cx-eyebrow {
-  font-size: var(--fs-sm);
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--fg-2);
 }
 
 .cx-header h1 { max-width: 18ch; }
@@ -54,18 +46,6 @@
 .cx-prose h2 { margin-bottom: var(--sp-2); }
 .cx-prose strong { color: var(--fg); font-weight: 500; }
 
-/* ---------- Founder portrait + bio split ---------- */
-
-.cx-split {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: start;
-}
-@media (min-width: 48rem) {
-  .cx-split { grid-template-columns: minmax(11rem, 17rem) 1fr; }
-}
-
 .cx-figure { margin: 0; max-width: 17rem; display: flex; flex-direction: column; gap: var(--sp-3); }
 .cx-figure__frame {
   aspect-ratio: 4 / 5;
@@ -77,63 +57,6 @@
   font-size: 1.75rem;
 }
 .cx-figure figcaption { font-size: var(--fs-sm); color: var(--c-muted); }
-
-/* ---------- Row list ---------- */
-
-.cx-list { border-top: 1px solid var(--rule); }
-
-.cx-row {
-  display: grid;
-  grid-template-columns: 3rem 1fr;
-  gap: var(--sp-4) clamp(1rem, 3vw, 2rem);
-  padding-block: clamp(1.5rem, 3vw, 2.25rem);
-  border-bottom: 1px solid var(--rule);
-}
-.cx-list--compact .cx-row { padding-block: var(--sp-4); }
-.cx-list--labelled .cx-row { grid-template-columns: 7rem 1fr; }
-
-.cx-row__index {
-  font-family: var(--font-display);
-  font-size: var(--fs-lg);
-  line-height: var(--lh-snug);
-  color: var(--c-muted);
-}
-.cx-list--labelled .cx-row__index { font-family: var(--font-body); font-size: var(--fs-sm); font-weight: 500; padding-top: 0.2em; }
-
-.cx-row__body { display: flex; flex-direction: column; gap: var(--sp-2); min-width: 0; }
-.cx-row__body h3 { font-size: var(--fs-xl); }
-.cx-row__tags { font-size: var(--fs-sm); color: var(--c-muted); }
-
-/* two parallel notes inside a row (e.g. job seeker / employer) */
-.cx-pair {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--sp-4);
-  margin-top: var(--sp-2);
-}
-@media (min-width: 40rem) { .cx-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.cx-pair dt { font-size: var(--fs-xs); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--c-muted); margin-bottom: var(--sp-1); }
-.cx-pair dd { margin: 0; color: var(--fg-2); }
-
-/* ---------- Columns ---------- */
-
-.cx-columns {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-}
-.cx-column {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-3);
-  padding-block: var(--sp-5);
-  border-top: 1px solid var(--rule);
-}
-.cx-column:first-child { padding-top: 0; border-top: 0; }
-@media (min-width: 48rem) {
-  .cx-columns { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .cx-column { padding: 0 clamp(1.25rem, 3vw, 2rem); border-top: 0; border-left: 1px solid var(--rule); }
-  .cx-column:first-child { padding-left: 0; border-left: 0; }
-}
 
 /* ---------- Statement band ---------- */
 
@@ -189,8 +112,6 @@
   html.js .cx-reveal--visible { opacity: 1; transform: none; }
 }
 
-.cx-list--plain { margin: 0; padding: 0; list-style: none; }
-
 /* ---------- Form ---------- */
 
 .cx-form { display: flex; flex-direction: column; gap: var(--sp-5); }
@@ -238,3 +159,291 @@
 .cx-form__status--success { color: #1f6b3a; }
 .cx-form__status--error { color: #a8231f; }
 .cx-form__status:focus { outline: none; }
+
+/* ============================================================
+   Layout families added in the redesign. Each page mixes at least
+   four of: header, lanes, marquee, sticky split, bento, grid, CTA.
+   ============================================================ */
+
+/* ---------- Audience lanes: two full-bleed panels, whole panel is the link ---------- */
+
+.cx-lanes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+@media (min-width: 48rem) { .cx-lanes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.cx-lane {
+  --bg: var(--c-cream);
+  --fg: var(--c-navy-700);
+  --fg-2: var(--c-navy-300);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: var(--section-y) var(--gutter);
+  background: var(--bg);
+  color: var(--fg);
+  text-decoration: none;
+  transition: background-color var(--dur) var(--ease);
+}
+.cx-lane--navy { --bg: var(--c-navy-700); --fg: var(--c-cool); --fg-2: rgba(246, 249, 255, 0.82); --focus: var(--c-cream); }
+.cx-lane:hover { --bg: var(--c-sand); }
+.cx-lane--navy:hover { --bg: var(--c-navy-600); }
+.cx-lane:focus-visible { outline-offset: -6px; }
+
+.cx-lane__inner { width: 100%; max-width: 30rem; margin-inline: auto; display: flex; flex-direction: column; gap: var(--sp-3); }
+@media (min-width: 48rem) {
+  .cx-lane:first-child .cx-lane__inner { margin-right: clamp(1rem, 4vw, 3rem); }
+  .cx-lane:last-child .cx-lane__inner { margin-left: clamp(1rem, 4vw, 3rem); }
+}
+.cx-lane__kicker { font-size: var(--fs-sm); font-weight: 500; color: var(--fg-2); }
+.cx-lane h2 { font-size: var(--fs-2xl); color: var(--fg); }
+.cx-lane p { color: var(--fg-2); }
+.cx-lane__go {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-top: var(--sp-3);
+  font-weight: 500;
+  color: var(--fg);
+}
+.cx-lane__go svg { transition: transform var(--dur) var(--ease); }
+.cx-lane:hover .cx-lane__go svg { transform: translateX(0.35rem); }
+
+/* ---------- Marquee: one per page, specialisms strip ---------- */
+
+.cx-marquee {
+  --gap: clamp(2rem, 6vw, 4rem);
+  display: flex;
+  gap: var(--gap);
+  overflow: hidden;
+  padding-block: var(--sp-5);
+  background: var(--bg);
+  color: var(--fg);
+  border-bottom: 1px solid var(--rule);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.cx-marquee ul {
+  flex: none;
+  display: flex;
+  gap: var(--gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-width: 100%;
+  justify-content: space-around;
+}
+.cx-marquee li {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  white-space: nowrap;
+  color: var(--fg);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cx-marquee ul { animation: cx-marquee 40s linear infinite; }
+  .cx-marquee:hover ul { animation-play-state: paused; }
+}
+@keyframes cx-marquee { to { transform: translateX(calc(-100% - var(--gap))); } }
+
+/* ---------- Sticky split: left column pins while the right scrolls ---------- */
+
+.cx-sticky {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+@media (min-width: 48rem) {
+  .cx-sticky { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+  .cx-sticky__aside { position: sticky; top: calc(var(--header-h) + var(--sp-6)); }
+}
+.cx-sticky__aside { display: flex; flex-direction: column; gap: var(--sp-4); }
+.cx-sticky__aside .cx-figure { max-width: none; }
+
+/* ---------- Steps: big index above a rule, three across ---------- */
+
+.cx-steps {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+.cx-step {
+  counter-increment: step;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding-top: var(--sp-4);
+  border-top: 2px solid var(--fg);
+}
+.cx-step::before {
+  content: counter(step, decimal-leading-zero);
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
+  line-height: 1;
+  color: var(--fg);
+}
+.cx-step h3 { font-size: var(--fs-xl); }
+
+/* ---------- Bento: 2 + 2, first cell is the feature ---------- */
+
+.cx-bento {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 48rem) {
+  .cx-bento { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: minmax(15rem, auto); }
+  .cx-bento > :first-child { grid-row: span 2; }
+}
+.cx-bento > li {
+  --fg: var(--c-navy-900);
+  --fg-2: var(--c-navy-300);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: var(--r-md);
+  background: var(--c-cream);
+  color: var(--fg);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.cx-bento > li:hover { transform: translateY(-3px); box-shadow: var(--shadow-1); }
+.cx-bento > :first-child { --fg: var(--c-cool); --fg-2: rgba(246, 249, 255, 0.82); --rule: rgba(246, 249, 255, 0.35); background: var(--c-navy-700); }
+.cx-bento > :nth-child(3) { --fg: var(--c-navy-700); --fg-2: var(--c-navy-200); --rule: rgba(8, 38, 88, 0.22); background: var(--c-khaki); }
+.cx-bento h3 { color: var(--fg); }
+.cx-bento p { color: var(--fg-2); }
+.cx-bento > li > p:last-child { margin-top: auto; padding-top: var(--sp-3); }
+
+.cx-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cx-pills li {
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--r-pill);
+  font-size: var(--fs-sm);
+  color: var(--fg);
+}
+
+/* ---------- Two-up grid: short promise lists, no hairline-per-row ---------- */
+
+.cx-grid2 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-4) var(--sp-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 40rem) { .cx-grid2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.cx-grid2 li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--sp-3);
+  align-items: start;
+  font-size: var(--fs-lg);
+  color: var(--fg);
+}
+.cx-grid2 svg { margin-top: 0.3em; color: var(--fg-2); }
+
+/* ---------- Stepped tiles: three values, each one step lower ---------- */
+
+.cx-tiles {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 48rem) {
+  .cx-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; }
+  .cx-tiles > :nth-child(2) { margin-top: var(--sp-7); }
+  .cx-tiles > :nth-child(3) { margin-top: calc(var(--sp-7) * 2); }
+}
+.cx-tile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  border-radius: var(--r-md);
+  background: var(--c-white);
+  color: var(--c-navy-900);
+  box-shadow: var(--shadow-1);
+}
+.cx-tile h3 { font-size: var(--fs-2xl); color: var(--c-navy-700); }
+.cx-tile p { color: var(--c-navy-300); }
+
+/* ---------- Two-column pair (mission / vision) ---------- */
+
+.cx-pair2 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-6);
+}
+@media (min-width: 48rem) { .cx-pair2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(2rem, 6vw, 5rem); } }
+.cx-pair2 > div { display: flex; flex-direction: column; gap: var(--sp-3); }
+.cx-pair2 h2 { font-size: var(--fs-xl); }
+
+/* ---------- Pull statement: one line, large, left-aligned ---------- */
+
+.cx-pull {
+  max-width: 28ch;
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  line-height: var(--lh-snug);
+  color: var(--fg);
+}
+
+/* ---------- Header with side panel (job seekers) ---------- */
+
+.cx-header--split .cx-header__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-6);
+  max-width: var(--container);
+}
+@media (min-width: 56rem) {
+  .cx-header--split .cx-header__inner { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); align-items: center; gap: clamp(2rem, 6vw, 5rem); }
+}
+.cx-header--split .cx-header__copy { display: flex; flex-direction: column; gap: var(--sp-5); }
+.cx-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: var(--r-md);
+  background: var(--c-white);
+  color: var(--c-navy-900);
+  box-shadow: var(--shadow-2);
+}
+.cx-panel h2 { font-size: var(--fs-xl); color: var(--c-navy-700); }
+.cx-panel p { color: var(--c-navy-300); }
+.cx-panel .btn { align-self: flex-start; }
+
+/* ---------- Stagger: children of a revealed block cascade in ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  html.js .cx-reveal[data-stagger] > * {
+    opacity: 0;
+    transform: translateY(0.75rem);
+    transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
+  }
+  html.js .cx-reveal[data-stagger] > :nth-child(2) { transition-delay: 90ms; }
+  html.js .cx-reveal[data-stagger] > :nth-child(3) { transition-delay: 180ms; }
+  html.js .cx-reveal[data-stagger] > :nth-child(4) { transition-delay: 270ms; }
+  html.js .cx-reveal--visible[data-stagger] > * { opacity: 1; transform: none; }
+}
