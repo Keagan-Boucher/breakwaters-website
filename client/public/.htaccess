@@ -52,6 +52,7 @@ RewriteRule ^ - [L]
 # Prerendered routes: /about -> /about/index.html, no trailing-slash redirect.
 RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
 RewriteRule ^([a-z-]+)/?$ /$1/index.html [L]
-# Anything else is an unknown path: let the SPA show the home redirect.
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.html [L]
+# Anything else is an unknown path: real 404 status with the prerendered page
+# (a 200 + homepage would be a soft 404 in Search Console).
+RewriteRule . - [R=404,L]
+ErrorDocument 404 /404/index.html

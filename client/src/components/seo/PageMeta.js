@@ -20,7 +20,9 @@ export default function PageMeta({ path }) {
     const url = `${siteUrl}${path === "/" ? "/" : path}`;
     document.title = meta.title;
     setTag("meta[name='description']", { name: "description", content: meta.description });
-    setTag("link[rel='canonical']", { rel: "canonical", href: url });
+    setTag("meta[name='robots']", { name: "robots", content: meta.noindex ? "noindex,nofollow" : "index,follow" });
+    if (meta.noindex) document.head.querySelector("link[rel='canonical']")?.remove();
+    else setTag("link[rel='canonical']", { rel: "canonical", href: url });
     setTag("meta[property='og:title']", { property: "og:title", content: meta.title });
     setTag("meta[property='og:description']", { property: "og:description", content: meta.description });
     setTag("meta[property='og:url']", { property: "og:url", content: url });

@@ -42,4 +42,10 @@ export const ROUTES = {
       "The terms that apply when you use the Breakwaters Recruiting website or contact us through it.",
     breadcrumb: "Terms and conditions",
   },
+  // Rendered for any unknown path. No canonical, not in the sitemap.
+  "/404": {
+    title: "Page not found | Breakwaters Recruiting",
+    description: "That page doesn't exist on the Breakwaters Recruiting site.",
+    noindex: true,
+  },
 };
