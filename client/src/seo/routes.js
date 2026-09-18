@@ -30,4 +30,16 @@ export const ROUTES = {
       "Reach Breakwaters Recruiting in Johannesburg by email, WhatsApp or a short form. Job seekers and employers both get a real person, not a ticket queue.",
     breadcrumb: "Contact",
   },
+  "/privacy": {
+    title: "Privacy Policy | Breakwaters Recruiting",
+    description:
+      "How Breakwaters Recruiting collects, uses and protects personal information from job seekers and employers, in line with POPIA.",
+    breadcrumb: "Privacy policy",
+  },
+  "/terms": {
+    title: "Terms and Conditions | Breakwaters Recruiting",
+    description:
+      "The terms that apply when you use the Breakwaters Recruiting website or contact us through it.",
+    breadcrumb: "Terms and conditions",
+  },
 };

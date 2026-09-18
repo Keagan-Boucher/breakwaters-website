@@ -5,6 +5,7 @@ import AboutUsPage from "./pages/AboutUsPage";
 import ServicesPage from "./pages/ServicesPage";
 import JobSeekersPage from "./pages/JobSeekersPage";
 import ContactPage from "./pages/ContactPage";
+import { PrivacyPage, TermsPage } from "./pages/LegalPages";
 
 export default function App() {
   return (
@@ -15,6 +16,8 @@ export default function App() {
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/job-seekers" element={<JobSeekersPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/terms" element={<TermsPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>

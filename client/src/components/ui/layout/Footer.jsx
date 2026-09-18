@@ -50,6 +50,10 @@ export default function Footer() {
 
         <div className="footer__bottom">
           <p>© {new Date().getFullYear()} Breakwaters Recruiting. All rights reserved.</p>
+          <ul className="footer__legal">
+            <li><Link to="/privacy">Privacy policy</Link></li>
+            <li><Link to="/terms">Terms and conditions</Link></li>
+          </ul>
         </div>
       </div>
     </footer>

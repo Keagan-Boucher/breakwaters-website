@@ -36,7 +36,8 @@ contact form. Nothing else runs server-side.
   do not introduce new hex values in components. Fonts: Montagu Slab
   (display) + Roboto (body), self-hosted variable woff2 in
   `src/assets/fonts/`.
-- Routes are `/`, `/about`, `/services`, `/job-seekers`, `/contact`. They are
+- Routes are `/`, `/about`, `/services`, `/job-seekers`, `/contact`, plus
+  `/privacy` and `/terms` (generic legal pages, `pages/LegalPages.jsx`). They are
   indexed and in `sitemap.xml`. Don't rename.
 - Logo files `src/assets/logos/Logo-full.svg` (header) and the inline
   `LogoMark.jsx` (footer/icons) are used as-is.
