@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "../styling/content-pages.css";
 import PageMeta from "../components/seo/PageMeta";
 import Reveal from "../components/ui/common/Reveal";
-import ImagePlaceholder from "../components/ui/common/ImagePlaceholder";
+import FounderPortrait from "../components/ui/common/FounderPortrait";
 import { owner } from "../config/site";
 
 const STORY = [
@@ -39,7 +39,7 @@ export default function AboutUsPage() {
 
       <section className="cx-section" aria-labelledby="story-title">
         <div className="container container--narrow cx-split">
-          <Reveal><ImagePlaceholder label={`${owner}, Founder`} /></Reveal>
+          <Reveal><FounderPortrait /></Reveal>
           <Reveal delay={100} className="cx-prose">
             <h2 id="story-title">How Breakwaters began</h2>
             {STORY.map((p) => <p key={p}>{p}</p>)}
