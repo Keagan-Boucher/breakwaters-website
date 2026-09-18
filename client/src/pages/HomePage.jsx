@@ -10,8 +10,6 @@ import { locality } from "../config/site";
 
 const HERO_TITLE = "We break barriers\nfor your success.";
 
-const SPECIALISMS = ["SAP", "Oracle", "Full-stack development", "IT architects", "Project management", "Functional roles", "Executive search", "Contract and permanent"];
-
 const STEPS = [
   { step: "Reach out", body: "Send a CV, or tell us about the role. A few lines is enough to start." },
   { step: "Review", body: "A recruiter reads it personally, not a parser, and shortlists from a network built over years." },
@@ -59,10 +57,6 @@ export default function HomePage() {
         </Link>
       </section>
 
-      <div className="cx-marquee surface-cream" aria-label="Areas we recruit for">
-        <ul>{SPECIALISMS.map((s) => <li key={s}>{s}</li>)}</ul>
-        <ul aria-hidden="true">{SPECIALISMS.map((s) => <li key={s}>{s}</li>)}</ul>
-      </div>
 
       <section className="cx-section" aria-labelledby="how-title">
         <div className="container cx-sticky">
