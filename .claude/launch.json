@@ -5,7 +5,7 @@
       "name": "breakwaters-client",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["--prefix", "client", "start"],
-      "port": 3000
+      "port": 5173
     }
   ]
 }

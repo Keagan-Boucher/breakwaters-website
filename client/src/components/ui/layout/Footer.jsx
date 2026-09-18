@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import '../../../styling/Footer.css';
-import { ReactComponent as Logo } from '../../../assets/logos/logo.svg';
+import Logo from '../common/LogoMark';
 import { emailRecruits, phoneDisplay, phoneE164 } from '../../../config/site';
 
 export default function Footer() {
