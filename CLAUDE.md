@@ -115,7 +115,7 @@ cd client && npm run build && npm run preview # :4173, prerendered, what Hosting
 ## Still TODO (owner input needed)
 
 In `src/config/site.js` (UI hides the feature until filled):
-`linkedinUrl`, `facebookUrl`, `whatsappE164`, `formRecipient` (+ the same
+`facebookUrl`, `whatsappE164`, `formRecipient` (+ the same
 `FORM_RECIPIENT` in `contact.php`). After deploy: create the
 `no-reply@` mailbox and enable SPF/DKIM on Hostinger.
 

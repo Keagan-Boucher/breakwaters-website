@@ -12,8 +12,7 @@ export const country = "ZA";
 export const emailRecruits = "recruits@breakwatersrecruiting.co.za";
 export const emailVanessa = "vanessa@breakwatersrecruiting.co.za";
 
-// TODO: full LinkedIn company page URL, e.g. "https://www.linkedin.com/company/breakwaters-recruiting"
-export const linkedinUrl = "";
+export const linkedinUrl = "https://www.linkedin.com/company/breakwaters-recruiting-agency/";
 // TODO: full Facebook page URL, e.g. "https://www.facebook.com/breakwatersrecruiting"
 export const facebookUrl = "";
 // TODO: WhatsApp number, digits only, country code first, no + or spaces, e.g. "27823703603"
