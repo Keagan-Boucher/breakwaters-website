@@ -32,7 +32,7 @@
   --c-navy-300: #23447a;   /* secondary text on white/cream (9.6:1)       */
   --c-navy-200: #16305f;   /* secondary text on khaki (7.1:1)             */
   --c-muted:    #526687;   /* captions on white/cream (5.8:1 / 5.2:1)      */
-  --c-cream:    #f7f1e6;
+  --c-cream:    #eeece0;   /* same as khaki by owner request               */
   --c-sand:     #d5c8b1;
   --c-khaki:    #eeece0;
   --c-cool:     #f6f9ff;   /* text on navy                                */
