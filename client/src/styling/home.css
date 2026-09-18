@@ -10,8 +10,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background-image: url('../assets/images/noise-texture.png');
-   background-repeat: repeat-y, repeat-x;
   background: linear-gradient(135deg, #a79b87 0%, #D5C8B1 50%, #D5C8B1 100%);
   overflow: hidden;
 }
