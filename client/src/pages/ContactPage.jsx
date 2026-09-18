@@ -13,7 +13,7 @@ export default function ContactPage() {
         <div className="container container--narrow cx-header__inner">
           <h1>Get in touch</h1>
           <p className="cx-lede">
-            Email, call or message us directly, or leave your details in the short form below.
+            Email or message us directly, or leave your details in the short form below.
             Either way it lands with a real person, not a ticket queue.
           </p>
         </div>

@@ -27,7 +27,7 @@ export const ROUTES = {
   "/contact": {
     title: "Contact Breakwaters Recruiting | Johannesburg",
     description:
-      "Reach Breakwaters Recruiting in Johannesburg by email, phone, WhatsApp or a short form. Job seekers and employers both get a real person, not a ticket queue.",
+      "Reach Breakwaters Recruiting in Johannesburg by email, WhatsApp or a short form. Job seekers and employers both get a real person, not a ticket queue.",
     breadcrumb: "Contact",
   },
 };

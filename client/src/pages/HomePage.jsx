@@ -93,7 +93,7 @@ export default function HomePage() {
         <div className="container container--narrow cx-contact">
           <Reveal className="cx-prose">
             <h2 id="contact-title">Talk to a person</h2>
-            <p>Email, call or message us directly, or use the short form on the contact page and we'll come back to you.</p>
+            <p>Email or message us directly, or use the short form on the contact page and we'll come back to you.</p>
             <p><Link to="/contact" className="btn btn--primary">Get in touch</Link></p>
           </Reveal>
           <Reveal className="cx-contact__details" delay={80}>

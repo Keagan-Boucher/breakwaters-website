@@ -14,7 +14,7 @@ const EXPECT = [
 
 const STEPS = [
   { step: "Send your CV", body: "Email it with a few lines about what you're after. No portal, no forms to fight." },
-  { step: "We read it", body: "A recruiter, not a parser. We call to understand your goals, not just your keywords." },
+  { step: "We read it", body: "A recruiter, not a parser. We get in touch to understand your goals, not just your keywords." },
   { step: "We introduce you", body: "When a role fits, you hear from us directly and we prepare you for the conversation." },
 ];
 

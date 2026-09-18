@@ -58,7 +58,7 @@ client/
   scripts/prerender.mjs      route → static HTML; fills sameAs, font preloads, breadcrumbs
   public/                    copied verbatim: .htaccess, contact.php, robots, sitemap, og-image, icons
   src/
-    config/site.js           SINGLE SOURCE OF TRUTH for emails, phone, socials, WhatsApp, location
+    config/site.js           SINGLE SOURCE OF TRUTH for emails, socials, WhatsApp, location
     seo/routes.js            per-route title/description/breadcrumb (used by PageMeta and prerender)
     index.css                tokens, base, buttons, focus, skip link, WhatsApp FAB
     styling/content-pages.css the `cx-` editorial system every page uses (header, section, rows, columns, CTA, form, reveal)
@@ -66,7 +66,7 @@ client/
     styling/header.css, Footer.css
     components/layout/       Layout (skip link + header + <main> + footer + FAB), SiteHeader, WhatsAppButton
     components/seo/PageMeta.js   client-side head updates on in-app navigation
-    components/ui/common/    Reveal, ContactDetails, ImagePlaceholder (founder portrait TODO), LogoMark
+    components/ui/common/    Reveal, ContactDetails, LogoMark
     components/ui/forms/ContactForm.jsx
     hooks/useInView.js       visible-once observer; marks in-viewport nodes visible in a layout effect (no flicker, nothing hidden without JS)
     pages/*.jsx              one file per route
@@ -116,8 +116,7 @@ cd client && npm run build && npm run preview # :4173, prerendered, what Hosting
 
 In `src/config/site.js` (UI hides the feature until filled):
 `linkedinUrl`, `facebookUrl`, `whatsappE164`, `formRecipient` (+ the same
-`FORM_RECIPIENT` in `contact.php`). Founder portrait image for
-`AboutUsPage` (currently `ImagePlaceholder`). After deploy: create the
+`FORM_RECIPIENT` in `contact.php`). After deploy: create the
 `no-reply@` mailbox and enable SPF/DKIM on Hostinger.
 
 ## Verified state (2026-09-18, commit bfea5a7)

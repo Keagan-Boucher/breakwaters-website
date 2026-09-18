@@ -1,5 +1,5 @@
 import { FaWhatsapp } from "react-icons/fa6";
-import { emailRecruits, emailVanessa, phoneDisplay, phoneE164, whatsappUrl, owner } from "../../../config/site";
+import { emailRecruits, emailVanessa, whatsappUrl, owner } from "../../../config/site";
 
 // Direct-contact list used on the homepage and the contact page.
 export default function ContactDetails() {
@@ -12,10 +12,6 @@ export default function ContactDetails() {
       <div>
         <dt>Employers</dt>
         <dd><a href={`mailto:${emailVanessa}`}>{emailVanessa}</a></dd>
-      </div>
-      <div>
-        <dt>Phone</dt>
-        <dd><a href={`tel:${phoneE164}`}>{phoneDisplay}</a></dd>
       </div>
       {whatsappUrl && (
         <div>

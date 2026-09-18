@@ -3,7 +3,7 @@ import { FiCheck } from "react-icons/fi";
 import "../styling/content-pages.css";
 import PageMeta from "../components/seo/PageMeta";
 import Reveal from "../components/ui/common/Reveal";
-import ImagePlaceholder from "../components/ui/common/ImagePlaceholder";
+import portrait from "../assets/images/founder-vanessa-boucher.webp";
 import { owner } from "../config/site";
 
 const STORY = [
@@ -40,7 +40,10 @@ export default function AboutUsPage() {
       <section className="cx-section" aria-labelledby="story-title">
         <div className="container cx-sticky">
           <Reveal className="cx-sticky__aside">
-            <ImagePlaceholder label={`${owner}, Founder`} />
+            <figure className="cx-figure">
+              <img src={portrait} alt={`${owner}, founder of Breakwaters Recruiting`} width="666" height="900" loading="lazy" decoding="async" />
+              <figcaption>{owner}, Founder</figcaption>
+            </figure>
           </Reveal>
           <Reveal delay={100} className="cx-prose">
             <h2 id="story-title">How Breakwaters began</h2>

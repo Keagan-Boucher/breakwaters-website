@@ -11,8 +11,6 @@ export const country = "ZA";
 
 export const emailRecruits = "recruits@breakwatersrecruiting.co.za";
 export const emailVanessa = "vanessa@breakwatersrecruiting.co.za";
-export const phoneDisplay = "082 370 3603";
-export const phoneE164 = "+27823703603";
 
 // TODO: full LinkedIn company page URL, e.g. "https://www.linkedin.com/company/breakwaters-recruiting"
 export const linkedinUrl = "";
