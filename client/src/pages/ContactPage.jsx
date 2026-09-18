@@ -3,7 +3,6 @@ import PageMeta from "../components/seo/PageMeta";
 import Reveal from "../components/ui/common/Reveal";
 import ContactDetails from "../components/ui/common/ContactDetails";
 import ContactForm from "../components/ui/forms/ContactForm";
-import { locality } from "../config/site";
 
 export default function ContactPage() {
   return (
@@ -12,7 +11,6 @@ export default function ContactPage() {
 
       <header className="cx-header surface-cream">
         <div className="container container--narrow cx-header__inner">
-          <p className="cx-eyebrow">Contact · {locality}</p>
           <h1>Get in touch</h1>
           <p className="cx-lede">
             Email, call or message us directly, or leave your details in the short form below.

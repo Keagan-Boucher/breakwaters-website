@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { FiArrowRight } from "react-icons/fi";
 import "../styling/home.css";
 import "../styling/content-pages.css";
 import heroWave from "../assets/svgs/Hero-wave.svg";
@@ -9,10 +10,12 @@ import { locality } from "../config/site";
 
 const HERO_TITLE = "We break barriers\nfor your success.";
 
+const SPECIALISMS = ["SAP", "Oracle", "Full-stack development", "IT architects", "Project management", "Functional roles", "Executive search", "Contract and permanent"];
+
 const STEPS = [
-  { step: "Reach out", seeker: "Send us your CV and a few lines about what you're after.", employer: "Tell us about the role and the kind of person you need." },
-  { step: "Review", seeker: "A recruiter reads your profile personally, not a parser.", employer: "We source and shortlist candidates from a network built over years." },
-  { step: "Connect", seeker: "You're matched and contacted directly.", employer: "You review the shortlist and schedule interviews." },
+  { step: "Reach out", body: "Send a CV, or tell us about the role. A few lines is enough to start." },
+  { step: "Review", body: "A recruiter reads it personally, not a parser, and shortlists from a network built over years." },
+  { step: "Connect", body: "Candidates are contacted directly. Employers review the shortlist and book interviews." },
 ];
 
 export default function HomePage() {
@@ -27,8 +30,7 @@ export default function HomePage() {
             <span>for your success.</span>
           </h1>
           <p className="hero__lede">
-            A human-led recruitment agency in {locality}, South Africa. We connect
-            companies with SAP, Oracle and IT talent, and talent with the right companies.
+            A human-led recruitment agency in {locality}, connecting South African companies with SAP, Oracle and IT talent.
           </p>
           <div className="hero__actions">
             <Link to="/job-seekers" className="btn btn--primary">I'm looking for a job</Link>
@@ -39,55 +41,58 @@ export default function HomePage() {
         <img src={heroWave} alt="" className="hero__crest" width="520" height="520" decoding="async" aria-hidden="true" />
       </section>
 
+      <section className="cx-lanes" aria-label="Choose your path">
+        <Link to="/job-seekers" className="cx-lane">
+          <div className="cx-lane__inner">
+            <p className="cx-lane__kicker">Job seekers</p>
+            <h2>Find more than your next role.</h2>
+            <p>We get to know you, your goals and what matters to you before we match you with an employer.</p>
+            <span className="cx-lane__go">Send us your CV <FiArrowRight aria-hidden="true" /></span>
+          </div>
+        </Link>
+        <Link to="/services" className="cx-lane cx-lane--navy">
+          <div className="cx-lane__inner">
+            <p className="cx-lane__kicker">Employers</p>
+            <h2>Hire people you can trust.</h2>
+            <p>Permanent, contract and executive placements from a recruiter with two decades inside IT consulting.</p>
+            <span className="cx-lane__go">See our services <FiArrowRight aria-hidden="true" /></span>
+          </div>
+        </Link>
+      </section>
+
+      <div className="cx-marquee surface-cream" aria-label="Areas we recruit for">
+        <ul>{SPECIALISMS.map((s) => <li key={s}>{s}</li>)}</ul>
+        <ul aria-hidden="true">{SPECIALISMS.map((s) => <li key={s}>{s}</li>)}</ul>
+      </div>
+
       <section className="cx-section" aria-labelledby="how-title">
-        <div className="container container--narrow">
-          <Reveal className="cx-section__head">
+        <div className="container cx-sticky">
+          <Reveal className="cx-sticky__aside">
             <h2 id="how-title">Human-led matches in three steps</h2>
             <p>From the first hello to the final interview, every connection is guided by a recruiter who knows people matter most.</p>
           </Reveal>
-          <ol className="cx-list cx-list--plain">
-            {STEPS.map(({ step, seeker, employer }, i) => (
-              <Reveal as="li" className="cx-row" delay={i * 60} key={step}>
-                <span className="cx-row__index" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
-                <div className="cx-row__body">
-                  <h3>{step}</h3>
-                  <dl className="cx-pair">
-                    <div><dt>Job seeker</dt><dd>{seeker}</dd></div>
-                    <div><dt>Employer</dt><dd>{employer}</dd></div>
-                  </dl>
-                </div>
-              </Reveal>
+          <Reveal as="ol" className="cx-steps" data-stagger="">
+            {STEPS.map(({ step, body }) => (
+              <li className="cx-step" key={step}>
+                <h3>{step}</h3>
+                <p>{body}</p>
+              </li>
             ))}
-          </ol>
+          </Reveal>
         </div>
       </section>
 
-      <section className="cx-section surface-cream" aria-labelledby="why-title">
-        <div className="container container--text">
-          <Reveal className="cx-prose">
-            <h2 id="why-title">Recruitment with heart, precision and trust</h2>
-            <p>
-              Breakwaters Recruiting was built on real experience, not algorithms. Every CV is
-              personally reviewed, so every match benefits both sides.
-            </p>
+      <section className="cx-section surface-khaki" aria-labelledby="why-title">
+        <div className="container container--narrow cx-prose">
+          <Reveal>
+            <p className="cx-pull" id="why-title">Built on real experience, not algorithms. Every CV is read by a person.</p>
+          </Reveal>
+          <Reveal delay={80}>
             <p>
               With deep roots in SAP, Oracle and the broader IT space, and a trusted network built
               over many years, we do recruitment with care, resilience and genuine connection.
             </p>
-            <p><Link to="/about">Read our story</Link></p>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="cx-section surface-navy" aria-labelledby="cta-title">
-        <div className="container">
-          <Reveal className="cx-cta">
-            <h2 id="cta-title">Take the first step</h2>
-            <p>Send us your CV, or tell us who you're looking for. We'll do the heavy lifting.</p>
-            <div className="cx-cta__actions">
-              <Link to="/job-seekers" className="btn btn--primary">Submit your CV</Link>
-              <Link to="/services" className="btn btn--secondary">Find talent</Link>
-            </div>
+            <p style={{ marginTop: "var(--sp-4)" }}><Link to="/about">Read our story</Link></p>
           </Reveal>
         </div>
       </section>
@@ -97,7 +102,7 @@ export default function HomePage() {
           <Reveal className="cx-prose">
             <h2 id="contact-title">Talk to a person</h2>
             <p>Email, call or message us directly, or use the short form on the contact page and we'll come back to you.</p>
-            <p><Link to="/contact" className="btn btn--secondary">Go to the contact page</Link></p>
+            <p><Link to="/contact" className="btn btn--primary">Get in touch</Link></p>
           </Reveal>
           <Reveal className="cx-contact__details" delay={80}>
             <ContactDetails />
