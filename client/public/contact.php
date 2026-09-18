@@ -142,22 +142,17 @@ $audienceLabel = ['job_seeker' => 'Job seeker', 'employer' => 'Employer', 'other
 
 $safeName  = header_safe($name);
 $safeEmail = header_safe($email);
-$subject   = header_safe("Website enquiry ({$audienceLabel}): {$safeName}");
+$subject   = header_safe("Website enquiry from {$safeName} ({$audienceLabel})");
 
+// The body is what gets quoted when Vanessa hits Reply, so it reads as the
+// sender's own message with a short signature. IP and consent go in X-
+// headers below: visible via "show original", never quoted in a reply.
 $body = implode("\n", [
-    "New enquiry via " . SITE_DOMAIN,
-    "",
-    "Name:     {$name}",
-    "Email:    {$email}",
-    "Phone:    " . ($phone !== '' ? $phone : '-'),
-    "I am a:   {$audienceLabel}",
-    "Consent:  yes (POPIA), " . gmdate('c'),
-    "",
-    "Message:",
     $message,
     "",
     "--",
-    "Sent from IP " . $ip,
+    "{$name} ({$audienceLabel})",
+    $email . ($phone !== '' ? " | {$phone}" : ''),
 ]);
 $body = str_replace("\0", '', $body);
 
@@ -167,7 +162,9 @@ $headers = [
     'MIME-Version: 1.0',
     'Content-Type: text/plain; charset=UTF-8',
     'Content-Transfer-Encoding: 8bit',
-    'X-Mailer: PHP/' . PHP_VERSION,
+    'X-Enquiry-Audience: ' . $audience,
+    'X-Enquiry-IP: ' . header_safe($ip),
+    'X-Enquiry-Consent: POPIA ' . gmdate('c'),
 ];
 
 $sent = @mail($to, mb_encode_mimeheader($subject, 'UTF-8'), $body, implode("\r\n", $headers), '-f' . FROM_ADDRESS);
