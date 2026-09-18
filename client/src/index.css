@@ -219,3 +219,34 @@ button, input, select, textarea { font: inherit; color: inherit; }
 }
 
 .btn--compact { min-height: 2.5rem; padding-block: 0.5rem; font-size: var(--fs-sm); }
+
+/* ---------- WhatsApp floating button ---------- */
+
+.wa-fab {
+  position: fixed;
+  right: max(var(--sp-4), env(safe-area-inset-right));
+  bottom: max(var(--sp-4), env(safe-area-inset-bottom));
+  z-index: var(--z-fab);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-height: 3.25rem;
+  padding: 0 1.25rem;
+  border-radius: var(--r-pill);
+  background: var(--c-navy-700);
+  color: var(--c-white);
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: var(--shadow-2);
+  transition: background-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+.wa-fab svg { width: 1.5rem; height: 1.5rem; }
+.wa-fab:hover { background: var(--c-navy-500); transform: translateY(-1px); }
+.wa-fab:focus-visible { outline-color: var(--c-navy-400); }
+
+@media (max-width: 47.99rem) {
+  .wa-fab { min-height: 3.5rem; width: 3.5rem; padding: 0; justify-content: center; }
+  .wa-fab__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  /* keep the last footer line clear of the button */
+  .footer { padding-bottom: calc(var(--sp-6) + 3.5rem + env(safe-area-inset-bottom)); }
+}

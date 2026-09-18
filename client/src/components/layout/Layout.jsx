@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import SiteHeader from "./SiteHeader";
 import Footer from "../ui/layout/Footer";
+import WhatsAppButton from "./WhatsAppButton";
 
 export default function Layout() {
   return (
@@ -11,6 +12,7 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <WhatsAppButton />
     </>
   );
 }
