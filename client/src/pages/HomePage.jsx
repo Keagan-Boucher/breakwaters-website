@@ -33,8 +33,7 @@ export default function HomePage() {
             A human-led recruitment agency in {locality}, connecting South African companies with SAP, Oracle and IT talent.
           </p>
           <div className="hero__actions">
-            <Link to="/job-seekers" className="btn btn--primary">I'm looking for a job</Link>
-            <Link to="/services" className="btn btn--secondary">I'm looking for talent</Link>
+            <Link to="/contact" className="btn btn--primary">Contact us</Link>
           </div>
         </div>
         <div className="hero__waves" aria-hidden="true" />
