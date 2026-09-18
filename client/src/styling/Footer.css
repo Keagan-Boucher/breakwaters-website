@@ -1,6 +1,6 @@
 .footer {
   background-color: #fff;
-  height: 300px;
+  min-height: 300px;
   display: flex;
   justify-content: center;
   color: #082658;
@@ -42,8 +42,8 @@
 .footer__links {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  font-size: 20px;
+  gap: 14px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 1.5;
 }

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import "../styling/home.css";
 import AppCardNav from "../components/ui/layout/AppCardNav";
 import heroWave from "../assets/svgs/Hero-wave.svg";
@@ -6,21 +7,20 @@ import Footer from "../components/ui/layout/Footer";
 import PageMeta from "../components/seo/PageMeta";
 
 const HERO_TITLE = "We Break Barriers\nfor your success.";
-const CONTACT_EMAIL = "mailto:support@breakwaters.co.za";
 const HOW_IT_WORKS_STEPS = [
   {
-    step: "1. Submit",
-    client: "Upload your CV and profile.",
-    company: "Create a verified company account.",
+    step: "1. Reach Out",
+    client: "Email us your CV and a bit about what you're after.",
+    company: "Email us about the talent you're looking for.",
   },
   {
     step: "2. Review",
-    client: "Our recruitment officers assess your fit.",
-    company: "Receive shortlisted candidates.",
+    client: "Our team personally reviews your profile.",
+    company: "We source and shortlist candidates for you.",
   },
   {
     step: "3. Connect",
-    client: "Get matched and notified via email.",
+    client: "Get matched and contacted directly.",
     company: "Review candidates and schedule interviews.",
   },
 ];
@@ -64,9 +64,9 @@ export default function HomePage() {
   return (
     <main className="home-page">
       <PageMeta
-        title="Breakwaters Recruitment | Human-Led Talent Matching"
-        description="Partner with Breakwaters Recruitment to match South African companies and talent through a guided intake, review, and placement process."
-        canonical="https://breakwatersrecruitment.co.za/"
+        title="Breakwaters Recruiting | Human-Led Talent Matching"
+        description="Breakwaters Recruiting connects South African businesses with exceptional, niche talent through a personal, human-centered recruitment process."
+        canonical="https://breakwatersrecruiting.co.za/"
       />
       <section className="hero-section noise">
         <div className="hero-content">
@@ -81,12 +81,12 @@ export default function HomePage() {
           </p>
 
           <div className="hero-cta-container">
-            <a href={CONTACT_EMAIL} className="hero-cta">
-              Submit your resume
-            </a>
-            <a href={CONTACT_EMAIL} className="hero-cta hero-cta--white">
-              Register your business
-            </a>
+            <Link to="/job-seekers" className="hero-cta">
+              I'm Looking for a Job
+            </Link>
+            <Link to="/services" className="hero-cta hero-cta--white">
+              I'm Looking for Talent
+            </Link>
           </div>
         </div>
         <div className="hero-wave-accent" aria-hidden="true" />
@@ -151,13 +151,15 @@ export default function HomePage() {
             </h2>
             <div className="about-breakwaters__content">
               <p>
-                At Breakwaters, we believe in people before algorithms. Every CV
-                is personally reviewed by our recruitment officers, ensuring
-                every match benefits both sides.
+                Breakwaters Recruiting was built on real experience, not
+                algorithms. Every CV is personally reviewed by our team,
+                ensuring every match benefits both sides.
               </p>
               <p>
-                With secure data handling and verified partners, we&apos;re
-                redefining recruitment for trust and transparency.
+                With deep roots in SAP, Oracle, and the broader IT space, and
+                a trusted network built over many years, we&apos;re
+                redefining recruitment for care, resilience, and genuine
+                connection.
               </p>
             </div>
 
@@ -165,13 +167,13 @@ export default function HomePage() {
               <div className="career-journey-panel__copy">
                 <h3>Take the first step in your career journey.</h3>
                 <p>
-                  Upload your CV, and let our recruitment team do the heavy
-                  lifting. We connect you with verified companies that match
-                  your goals and expertise.
+                  Send us your CV, and let our team do the heavy lifting. We
+                  connect you with verified companies that match your goals
+                  and expertise.
                 </p>
-                <a href={CONTACT_EMAIL} className="panel-cta">
+                <Link to="/job-seekers" className="panel-cta">
                   Submit Your CV
-                </a>
+                </Link>
               </div>
               <div className="career-journey-panel__accent" aria-hidden="true">
                 <div className="career-journey-panel__texture" />

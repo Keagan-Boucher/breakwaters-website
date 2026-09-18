@@ -1,0 +1,430 @@
+/* Editorial layout system for content-driven pages (About, Services, Job
+   Seekers, Contact). One consistent pattern language reused on every page:
+   a plain-language header, hairline-divided row lists for enumerable
+   content, rule-divided columns for parallel concepts, a single flat
+   colour reserved for statements/CTAs, and no imagery beyond one founder
+   portrait frame. Deliberately calmer than the homepage. */
+
+.cx-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #ffffff;
+  color: #06162f;
+  overflow-x: clip;
+}
+
+/* ---------- Palette helpers ---------- */
+
+.cx-page,
+.cx-header--white,
+.cx-section--white {
+  --cx-divider: rgba(8, 38, 88, 0.12);
+}
+
+.cx-header--cream,
+.cx-section--cream {
+  --cx-divider: rgba(8, 38, 88, 0.14);
+}
+
+.cx-header--khaki,
+.cx-section--khaki {
+  --cx-divider: rgba(8, 38, 88, 0.2);
+}
+
+.cx-header--navy,
+.cx-section--navy {
+  --cx-divider: rgba(255, 255, 255, 0.16);
+}
+
+/* ---------- Page header ---------- */
+
+.cx-header {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(136px, 18vw, 188px) clamp(1.5rem, 6vw, 4rem) clamp(56px, 8vw, 84px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2vw, 20px);
+  border-bottom: 1px solid var(--cx-divider);
+}
+
+.cx-header--white {
+  background: #ffffff;
+  color: #06162f;
+}
+
+.cx-header--cream {
+  background: #f7f1e6;
+  color: #06162f;
+}
+
+.cx-header--khaki {
+  background: #cdbfa2;
+  color: #082658;
+}
+
+.cx-header--navy {
+  background: #082658;
+  color: #f6f9ff;
+}
+
+.cx-header__inner {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2vw, 20px);
+}
+
+.cx-title {
+  margin: 0;
+  font-family: "Montagu Slab", serif;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.cx-header .cx-title {
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  max-width: 20ch;
+}
+
+.cx-title--section {
+  font-size: clamp(1.7rem, 3.4vw, 2.3rem);
+}
+
+.cx-lede {
+  max-width: 640px;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: clamp(1.05rem, 2.2vw, 1.2rem);
+  line-height: 1.65;
+}
+
+.cx-header--white .cx-lede,
+.cx-header--cream .cx-lede {
+  color: #23447a;
+}
+
+.cx-header--khaki .cx-lede {
+  color: #16305f;
+}
+
+.cx-header--navy .cx-lede {
+  color: rgba(246, 249, 255, 0.82);
+}
+
+.cx-header .cx-lede a {
+  font-weight: 700;
+  text-decoration-thickness: 1.5px;
+}
+
+/* ---------- Section blocks ---------- */
+
+.cx-section {
+  position: relative;
+  padding: clamp(56px, 8vw, 96px) clamp(1.5rem, 6vw, 4rem);
+  border-bottom: 1px solid var(--cx-divider);
+}
+
+.cx-section:last-of-type {
+  border-bottom: none;
+}
+
+.cx-section--white {
+  background: #ffffff;
+  color: #06162f;
+}
+
+.cx-section--cream {
+  background: #f7f1e6;
+  color: #06162f;
+}
+
+.cx-section--khaki {
+  background: #cdbfa2;
+  color: #082658;
+}
+
+.cx-section--navy {
+  background: #082658;
+  color: #f6f9ff;
+}
+
+.cx-section__inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cx-section__inner--wide {
+  max-width: 960px;
+}
+
+.cx-section__head {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: clamp(32px, 5vw, 48px);
+}
+
+.cx-section p {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  line-height: 1.75;
+}
+
+.cx-section--white p,
+.cx-section--cream p {
+  color: #23447a;
+}
+
+.cx-section--navy p {
+  color: rgba(246, 249, 255, 0.82);
+}
+
+.cx-section--khaki p {
+  color: #16305f;
+}
+
+.cx-prose {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ---------- Founder frame + bio split ---------- */
+
+.cx-split {
+  display: grid;
+  grid-template-columns: minmax(180px, 260px) 1fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: start;
+}
+
+.cx-frame-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cx-frame {
+  border: 1px solid rgba(8, 38, 88, 0.18);
+  background: #f7f1e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(8, 38, 88, 0.35);
+}
+
+.cx-frame svg {
+  font-size: 28px;
+}
+
+.cx-frame__caption.cx-frame__caption {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.85rem;
+  color: #5c7096;
+}
+
+/* ---------- Row list (the site's one enumerable-content pattern) ---------- */
+
+.cx-list {
+  border-top: 1px solid var(--cx-divider);
+}
+
+.cx-row {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: clamp(18px, 3vw, 32px);
+  padding: clamp(26px, 4vw, 36px) 0;
+  border-bottom: 1px solid var(--cx-divider);
+}
+
+.cx-list--compact .cx-row {
+  padding: clamp(16px, 2.5vw, 22px) 0;
+}
+
+.cx-list--labelled .cx-row {
+  grid-template-columns: 104px 1fr;
+}
+
+.cx-list--labelled .cx-row__index {
+  font-size: clamp(1rem, 1.6vw, 1.1rem);
+  opacity: 0.55;
+}
+
+.cx-row__index {
+  font-family: "Montagu Slab", serif;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  line-height: 1.4;
+  opacity: 0.4;
+}
+
+.cx-row__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cx-row__body h3 {
+  margin: 0;
+  font-family: "Montagu Slab", serif;
+  font-weight: 500;
+  font-size: clamp(1.2rem, 2.2vw, 1.4rem);
+}
+
+.cx-row__tags {
+  margin: 4px 0 0;
+  font-size: 0.95rem;
+  color: inherit;
+  opacity: 0.8;
+}
+
+/* ---------- Columns (parallel concepts, e.g. mission / vision / values) ---------- */
+
+.cx-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cx-column {
+  padding: 0 clamp(20px, 3vw, 32px);
+  border-left: 1px solid var(--cx-divider);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cx-column:first-child {
+  padding-left: 0;
+  border-left: none;
+}
+
+.cx-column h3 {
+  margin: 0;
+  font-family: "Montagu Slab", serif;
+  font-weight: 500;
+  font-size: clamp(1.15rem, 2vw, 1.3rem);
+}
+
+/* ---------- Statement band ---------- */
+
+.cx-statement.cx-statement {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+  font-family: "Montagu Slab", serif;
+  font-weight: 500;
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  line-height: 1.3;
+}
+
+/* ---------- CTA (flush inside a navy section, no nested card) ---------- */
+
+.cx-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.cx-cta h2,
+.cx-cta p {
+  margin: 0;
+}
+
+.cx-cta p {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.cx-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+/* ---------- Button ---------- */
+
+.cx-btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem clamp(1.8rem, 4vw, 2.4rem);
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  background: #ffffff;
+  color: #082658;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cx-btn-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- Scroll reveal ---------- */
+
+.cx-reveal {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.cx-reveal--visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cx-reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .cx-split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cx-frame-wrap {
+    max-width: 220px;
+  }
+
+  .cx-columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cx-column {
+    padding: clamp(18px, 3vw, 24px) 0 0;
+    border-left: none;
+    border-top: 1px solid var(--cx-divider);
+  }
+
+  .cx-column:first-child {
+    padding-top: 0;
+    border-top: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .cx-row {
+    grid-template-columns: 40px 1fr;
+  }
+}

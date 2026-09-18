@@ -1,7 +1,10 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { GoArrowUpRight } from 'react-icons/go';
 import '../../../styling/CardNav.css';
+
+const isInternalHref = (href) => typeof href === 'string' && href.startsWith('/');
 
 const CardNav = ({
   logo,
@@ -290,12 +293,29 @@ const CardNav = ({
             >
               <div className="nav-card-label">{item.label}</div>
               <div className="nav-card-links">
-                {item.links?.map((lnk, linkIdx) => (
-                  <a key={`${lnk.label}-${linkIdx}`} className="nav-card-link" href={lnk.href} aria-label={lnk.ariaLabel}>
-                    <GoArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
-                    {lnk.label}
-                  </a>
-                ))}
+                {item.links?.map((lnk, linkIdx) =>
+                  isInternalHref(lnk.href) ? (
+                    <Link
+                      key={`${lnk.label}-${linkIdx}`}
+                      className="nav-card-link"
+                      to={lnk.href}
+                      aria-label={lnk.ariaLabel}
+                    >
+                      <GoArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
+                      {lnk.label}
+                    </Link>
+                  ) : (
+                    <a
+                      key={`${lnk.label}-${linkIdx}`}
+                      className="nav-card-link"
+                      href={lnk.href}
+                      aria-label={lnk.ariaLabel}
+                    >
+                      <GoArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
+                      {lnk.label}
+                    </a>
+                  )
+                )}
               </div>
             </div>
           ))}
