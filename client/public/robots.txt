@@ -1,4 +1,5 @@
-# https://www.robotstxt.org/robotstxt.html
+# All crawlers may index the whole site.
 User-agent: *
-Disallow:
+Allow: /
+
 Sitemap: https://breakwatersrecruiting.co.za/sitemap.xml

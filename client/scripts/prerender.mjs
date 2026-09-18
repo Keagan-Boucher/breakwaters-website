@@ -9,9 +9,11 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const build = join(root, "build");
 const { render } = await import(pathToFileURL(join(root, "build-ssr", "entry-server.js")));
 const { ROUTES } = await import(pathToFileURL(join(root, "src", "seo", "routes.js")));
-const { siteUrl, siteName } = await import(pathToFileURL(join(root, "src", "config", "site.js")));
+const { siteUrl, siteName, socialLinks } = await import(pathToFileURL(join(root, "src", "config", "site.js")));
 
-const template = readFileSync(join(build, "index.html"), "utf8");
+const template = readFileSync(join(build, "index.html"), "utf8")
+  // Organization sameAs comes from config/site.js so unfilled socials stay out.
+  .replace('"sameAs": []', `"sameAs": ${JSON.stringify(socialLinks.map((s) => s.url))}`);
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 
 function head(path, meta) {
