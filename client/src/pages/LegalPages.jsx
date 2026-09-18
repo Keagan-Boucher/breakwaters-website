@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "../styling/content-pages.css";
 import PageMeta from "../components/seo/PageMeta";
-import { siteName, siteUrl, owner, emailVanessa, emailRecruits, locality, region } from "../config/site";
+import { siteName, siteUrl, owner, emailVanessa, locality, region } from "../config/site";
 
 // Generic legal pages. Both share one layout: a plain header, then headed
 // sections in a text-width column. Last-reviewed date is static on purpose
@@ -110,7 +110,7 @@ const TERMS = [
     <p>How we handle personal information is set out in our <Link to="/privacy">privacy policy</Link>, which forms part of these terms.</p>
   )},
   { h: "Contact", body: (
-    <p>Questions about these terms can be sent to <a href={`mailto:${emailVanessa}`}>{emailVanessa}</a>. Job seekers can reach us at <a href={`mailto:${emailRecruits}`}>{emailRecruits}</a>.</p>
+    <p>Questions about these terms can be sent to <a href={`mailto:${emailVanessa}`}>{emailVanessa}</a>.</p>
   )},
 ];
 

@@ -90,7 +90,7 @@ export default function ContactForm() {
           aria-invalid={!!errors.audience} aria-describedby={describe("audience", true)}>
           {AUDIENCES.map((a) => <option key={a.value} value={a.value}>{a.label}</option>)}
         </select>
-        <p className="cx-field__hint" id={f("audience-hint")}>Job seekers and employers go to different inboxes.</p>
+        <p className="cx-field__hint" id={f("audience-hint")}>Helps us reply with the right information.</p>
         {errors.audience && <p className="cx-field__error" id={f("audience-err")}>{errors.audience}</p>}
       </div>
 

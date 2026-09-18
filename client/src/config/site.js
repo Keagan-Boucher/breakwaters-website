@@ -9,8 +9,12 @@ export const locality = "Johannesburg";
 export const region = "Gauteng";
 export const country = "ZA";
 
-export const emailRecruits = "recruits@breakwatersrecruiting.co.za";
 export const emailVanessa = "vanessa@breakwatersrecruiting.co.za";
+// TEMPORARY: recruits@ is not set up yet, so job-seeker mail goes to Vanessa.
+// Restore to "recruits@breakwatersrecruiting.co.za" (and EMAIL_RECRUITS in
+// public/contact.php) once the mailbox exists, then split the email rows in
+// ContactDetails, Footer, index.html JSON-LD and LegalPages back out.
+export const emailRecruits = emailVanessa;
 
 export const linkedinUrl = "https://www.linkedin.com/company/breakwaters-recruiting-agency/";
 // TODO: full Facebook page URL, e.g. "https://www.facebook.com/breakwatersrecruiting"

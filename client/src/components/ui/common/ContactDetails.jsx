@@ -1,16 +1,12 @@
 import { FaWhatsapp, FaLinkedinIn } from "react-icons/fa6";
-import { emailRecruits, emailVanessa, whatsappUrl, linkedinUrl, owner } from "../../../config/site";
+import { emailVanessa, whatsappUrl, linkedinUrl, owner } from "../../../config/site";
 
 // Direct-contact list used on the homepage and the contact page.
 export default function ContactDetails() {
   return (
     <dl>
       <div>
-        <dt>Job seekers</dt>
-        <dd><a href={`mailto:${emailRecruits}`}>{emailRecruits}</a></dd>
-      </div>
-      <div>
-        <dt>Employers</dt>
+        <dt>Email</dt>
         <dd><a href={`mailto:${emailVanessa}`}>{emailVanessa}</a></dd>
       </div>
       {linkedinUrl && (

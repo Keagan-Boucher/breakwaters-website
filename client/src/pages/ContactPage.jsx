@@ -23,7 +23,7 @@ export default function ContactPage() {
         <div className="container container--narrow cx-contact">
           <Reveal className="cx-contact__details">
             <h2 id="direct-title">Reach us directly</h2>
-            <p>Job seekers and employers go to different inboxes so the right person answers first.</p>
+            <p>Every message lands with a real person.</p>
             <ContactDetails />
           </Reveal>
           <Reveal delay={80} className="cx-form-wrap" aria-labelledby="form-title" as="section">

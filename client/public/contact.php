@@ -11,7 +11,7 @@
 declare(strict_types=1);
 
 const SITE_DOMAIN     = 'breakwatersrecruiting.co.za';
-const EMAIL_RECRUITS  = 'recruits@breakwatersrecruiting.co.za';   // job seekers
+const EMAIL_RECRUITS  = 'vanessa@breakwatersrecruiting.co.za';    // TEMPORARY: recruits@ not set up yet; job seekers go to Vanessa too
 const EMAIL_VANESSA   = 'vanessa@breakwatersrecruiting.co.za';    // employers
 const FORM_RECIPIENT  = '';                                        // TODO: fallback inbox for "Other"; empty => EMAIL_RECRUITS
 const FROM_ADDRESS    = 'no-reply@breakwatersrecruiting.co.za';   // must exist on the Hostinger mailbox/SPF for delivery

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { FaLinkedinIn, FaFacebookF } from "react-icons/fa6";
 import "../../../styling/Footer.css";
 import Logo from "../common/LogoMark";
-import { emailRecruits, emailVanessa, linkedinUrl, facebookUrl, locality, region } from "../../../config/site";
+import { emailVanessa, linkedinUrl, facebookUrl, locality, region } from "../../../config/site";
 
 const SOCIALS = [
   { name: "LinkedIn", url: linkedinUrl, Icon: FaLinkedinIn },
@@ -31,9 +31,7 @@ export default function Footer() {
 
           <div>
             <dl className="footer__contact">
-              <dt>Job seekers</dt>
-              <dd><a href={`mailto:${emailRecruits}`}>{emailRecruits}</a></dd>
-              <dt>Employers</dt>
+              <dt>Email</dt>
               <dd><a href={`mailto:${emailVanessa}`}>{emailVanessa}</a></dd>
             </dl>
             {SOCIALS.length > 0 && (
