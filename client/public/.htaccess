@@ -16,7 +16,7 @@ RewriteRule ^ https://breakwatersrecruiting.co.za%{REQUEST_URI} [R=301,L]
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
   # Allows GA4 (the inline gtag snippet is hash-listed: rehash if you edit it in
   # index.html) and Google Fonts; everything else same-origin.
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-WDcsOuM4CAG1ZiErvlUR9RZGBGkgTE3SzhN6AttHgZo=' https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-WDcsOuM4CAG1ZiErvlUR9RZGBGkgTE3SzhN6AttHgZo=' https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline'; font-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
 </IfModule>
 
 # ---- Compression ----

@@ -1,3 +1,21 @@
+/* Self-hosted variable fonts (latin subset, from Google Fonts). */
+@font-face {
+  font-family: "Montagu Slab";
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url("./assets/fonts/montagu-slab-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("./assets/fonts/roboto-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* ============================================================
    Breakwaters Recruiting — design tokens and base layer
    Palette is fixed (brand). Everything else derives from here.
@@ -13,7 +31,7 @@
   --c-navy-400: #1a4fa3;   /* links + focus ring on light surfaces        */
   --c-navy-300: #23447a;   /* secondary text on white/cream (9.6:1)       */
   --c-navy-200: #16305f;   /* secondary text on khaki (7.1:1)             */
-  --c-muted:    #5c7096;   /* captions on white/cream only (4.9:1 / 4.4:1)*/
+  --c-muted:    #526687;   /* captions on white/cream (5.8:1 / 5.2:1)      */
   --c-cream:    #f7f1e6;
   --c-sand:     #d5c8b1;
   --c-khaki:    #cdbfa2;
