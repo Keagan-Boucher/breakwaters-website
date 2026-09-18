@@ -47,12 +47,14 @@
 .cx-prose strong { color: var(--fg); font-weight: 500; }
 
 .cx-figure { margin: 0; max-width: 17rem; display: flex; flex-direction: column; gap: var(--sp-3); }
-.cx-figure img {
-  width: 100%;
+.cx-figure__frame {
   aspect-ratio: 4 / 5;
-  object-fit: cover;
   border: 1px solid var(--rule);
   background: var(--c-cream);
+  display: grid;
+  place-items: center;
+  color: var(--c-muted);
+  font-size: 1.75rem;
 }
 .cx-figure figcaption { font-size: var(--fs-sm); color: var(--c-muted); }
 

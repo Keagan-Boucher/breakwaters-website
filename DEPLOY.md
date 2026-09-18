@@ -111,6 +111,9 @@ http://localhost:4173, also proxying `/contact.php`.
 
 ## 7. Things that still need a human
 
+- Founder portrait: `AboutUsPage` renders a placeholder frame. Drop a
+  `founder-vanessa-boucher.webp` (4:5) into `src/assets/images/` and replace
+  `ImagePlaceholder` with an `<img width height loading="lazy">`.
 - If the GA4 inline snippet in `client/index.html` is ever edited, re-hash
   it for the CSP in `public/.htaccess` (`script-src 'sha256-…'`), or the
   browser will block it.
