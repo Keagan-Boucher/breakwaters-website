@@ -4,8 +4,23 @@
     {
       "name": "breakwaters-client",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["--prefix", "client", "start"],
+      "runtimeArgs": [
+        "--prefix",
+        "client",
+        "start"
+      ],
       "port": 5173
+    },
+    {
+      "name": "breakwaters-preview",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "client",
+        "run",
+        "preview"
+      ],
+      "port": 4173
     }
   ]
 }
