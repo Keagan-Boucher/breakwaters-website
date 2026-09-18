@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://breakwatersrecruiting.co.za/sitemap.xml
+Sitemap: https://breakwatersrecruitment.co.za/sitemap.xml

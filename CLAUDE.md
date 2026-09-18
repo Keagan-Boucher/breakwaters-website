@@ -104,7 +104,7 @@ Focus ring is `--focus` (navy-400 on light, cream on navy), 3px, offset 3px.
   Currently all three routes in `contact.php` go to
   `recruits@breakwatersrecruitment.co.za` (note: recruit**ment**, a different
   domain from the site) by owner request; the site itself displays only
-  `vanessa@` until `recruits@breakwatersrecruiting.co.za` exists.
+  `vanessa@` until `recruits@breakwatersrecruitment.co.za` exists.
 
 ## Local dev
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Contact form endpoint for breakwatersrecruiting.co.za.
+ * Contact form endpoint for breakwatersrecruitment.co.za.
  * Served directly by Hostinger from public_html/contact.php (the SPA rewrite
  * in .htaccess skips real files). Accepts POST, validates, rate-limits,
  * routes by audience and sends plain-text mail. Returns JSON only.
@@ -10,13 +10,12 @@
 
 declare(strict_types=1);
 
-const SITE_DOMAIN     = 'breakwatersrecruiting.co.za';
+const SITE_DOMAIN     = 'breakwatersrecruitment.co.za';
 // All form submissions currently go to one inbox (owner request, 2026-09-18).
-// Note the domain: breakwatersrecruitMENT, not the site's breakwatersrecruitING.
 const EMAIL_RECRUITS  = 'recruits@breakwatersrecruitment.co.za';  // job seekers
 const EMAIL_VANESSA   = 'recruits@breakwatersrecruitment.co.za';  // employers
 const FORM_RECIPIENT  = 'recruits@breakwatersrecruitment.co.za';  // "Other"
-const FROM_ADDRESS    = 'no-reply@breakwatersrecruiting.co.za';   // must exist on the Hostinger mailbox/SPF for delivery
+const FROM_ADDRESS    = 'no-reply@breakwatersrecruitment.co.za';   // must exist on the Hostinger mailbox/SPF for delivery
 
 const RATE_LIMIT      = 5;        // submissions
 const RATE_WINDOW     = 3600;     // per IP per seconds

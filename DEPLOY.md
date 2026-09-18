@@ -1,4 +1,4 @@
-# Deploying breakwatersrecruiting.co.za
+# Deploying breakwatersrecruitment.co.za
 
 Static site (Vite + React, prerendered) plus one PHP script for the contact
 form. Hosted on Hostinger shared hosting; nothing else runs server-side.
@@ -64,7 +64,7 @@ address is on a domain hosted in the same account, and receiving servers
 check SPF/DKIM for that domain. To set up:
 
 1. **Create the sender mailbox**: hPanel → Emails → create
-   `no-reply@breakwatersrecruiting.co.za` (any password; nobody logs in).
+   `no-reply@breakwatersrecruitment.co.za` (any password; nobody logs in).
    This must match `FROM_ADDRESS` in `contact.php`.
 2. **SPF**: hPanel → Emails → DNS/Email settings usually adds it
    automatically. Check that the domain's DNS has a TXT record like
@@ -78,11 +78,11 @@ check SPF/DKIM for that domain. To set up:
 
 ## 5. Verify end to end after deploy
 
-1. `https://breakwatersrecruiting.co.za/about` loads directly (not via the
+1. `https://breakwatersrecruitment.co.za/about` loads directly (not via the
    homepage) and View Source shows the page's own `<title>` and `<h1>`.
-2. `http://www.breakwatersrecruiting.co.za/services` 301s to
-   `https://breakwatersrecruiting.co.za/services`.
-3. `curl -I https://breakwatersrecruiting.co.za/contact.php` returns
+2. `http://www.breakwatersrecruitment.co.za/services` 301s to
+   `https://breakwatersrecruitment.co.za/services`.
+3. `curl -I https://breakwatersrecruitment.co.za/contact.php` returns
    `405` with `Content-Type: application/json`.
 4. Submit the form on `/contact` as **Job seeker** → mail arrives at
    `recruits@`; as **Employer** → `vanessa@`. Reply-To is the submitter.

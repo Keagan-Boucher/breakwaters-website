@@ -1,12 +1,13 @@
 # Breakwaters Recruiting — Apache config for Hostinger shared hosting.
 # Order matters: host/HTTPS canonicalisation, headers, caching, then routing.
 
-# ---- Canonical host + HTTPS (non-www, one 301) ----
+# ---- Canonical host + HTTPS (one 301). Also catches www. and the old
+#      breakwatersrecruiting.co.za domain if it is parked on this account. ----
 RewriteEngine On
 RewriteBase /
 RewriteCond %{HTTPS} off [OR]
-RewriteCond %{HTTP_HOST} ^www\. [NC]
-RewriteRule ^ https://breakwatersrecruiting.co.za%{REQUEST_URI} [R=301,L]
+RewriteCond %{HTTP_HOST} !^breakwatersrecruitment\.co\.za$ [NC]
+RewriteRule ^ https://breakwatersrecruitment.co.za%{REQUEST_URI} [R=301,L]
 
 # ---- Security headers ----
 <IfModule mod_headers.c>

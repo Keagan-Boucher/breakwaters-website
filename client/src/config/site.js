@@ -2,7 +2,7 @@
 // Anything still marked TODO is treated as "not configured" by the UI and is
 // hidden rather than rendered as a dead link.
 
-export const siteUrl = "https://breakwatersrecruiting.co.za";
+export const siteUrl = "https://breakwatersrecruitment.co.za";
 export const siteName = "Breakwaters Recruiting";
 export const owner = "Vanessa Boucher";
 export const locality = "Johannesburg";
@@ -11,8 +11,8 @@ export const country = "ZA";
 
 export const emailVanessa = "vanessa@breakwatersrecruiting.co.za";
 // TEMPORARY: recruits@ is not set up yet, so job-seeker mail goes to Vanessa.
-// Restore to "recruits@breakwatersrecruiting.co.za" (and EMAIL_RECRUITS in
-// public/contact.php) once the mailbox exists, then split the email rows in
+// Restore to "recruits@breakwatersrecruitment.co.za" here (contact.php already
+// sends there) once you want it shown, then split the email rows in
 // ContactDetails, Footer, index.html JSON-LD and LegalPages back out.
 export const emailRecruits = emailVanessa;
 
