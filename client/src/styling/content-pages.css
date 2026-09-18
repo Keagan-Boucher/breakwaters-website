@@ -162,7 +162,7 @@
 
 /* ============================================================
    Layout families added in the redesign. Each page mixes at least
-   four of: header, lanes, marquee, sticky split, bento, grid, CTA.
+   four of: header, lanes, sticky split, bento, grid, CTA.
    ============================================================ */
 
 /* ---------- Audience lanes: two full-bleed panels, whole panel is the link ---------- */
@@ -209,42 +209,6 @@
 }
 .cx-lane__go svg { transition: transform var(--dur) var(--ease); }
 .cx-lane:hover .cx-lane__go svg { transform: translateX(0.35rem); }
-
-/* ---------- Marquee: one per page, specialisms strip ---------- */
-
-.cx-marquee {
-  --gap: clamp(2rem, 6vw, 4rem);
-  display: flex;
-  gap: var(--gap);
-  overflow: hidden;
-  padding-block: var(--sp-5);
-  background: var(--bg);
-  color: var(--fg);
-  border-bottom: 1px solid var(--rule);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-}
-.cx-marquee ul {
-  flex: none;
-  display: flex;
-  gap: var(--gap);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  min-width: 100%;
-  justify-content: space-around;
-}
-.cx-marquee li {
-  font-family: var(--font-display);
-  font-size: var(--fs-xl);
-  white-space: nowrap;
-  color: var(--fg);
-}
-@media (prefers-reduced-motion: no-preference) {
-  .cx-marquee ul { animation: cx-marquee 40s linear infinite; }
-  .cx-marquee:hover ul { animation-play-state: paused; }
-}
-@keyframes cx-marquee { to { transform: translateX(calc(-100% - var(--gap))); } }
 
 /* ---------- Sticky split: left column pins while the right scrolls ---------- */
 

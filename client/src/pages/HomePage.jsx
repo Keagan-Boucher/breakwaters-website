@@ -57,7 +57,6 @@ export default function HomePage() {
         </Link>
       </section>
 
-
       <section className="cx-section" aria-labelledby="how-title">
         <div className="container cx-sticky">
           <Reveal className="cx-sticky__aside">
