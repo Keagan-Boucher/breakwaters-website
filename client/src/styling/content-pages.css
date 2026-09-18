@@ -90,7 +90,7 @@
 .cx-contact__details dl { margin: 0; display: grid; gap: var(--sp-4); }
 .cx-contact__details dt { font-size: var(--fs-xs); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--c-muted); }
 .cx-contact__details dd { margin: var(--sp-1) 0 0; }
-.cx-contact__details dd a { display: inline-block; }
+.cx-contact__details dd a { display: inline-flex; align-items: center; gap: var(--sp-2); }
 
 /* ---------- Scroll reveal (progressive: content is visible unless JS
    has run, motion is allowed, and the node is still below the fold) ---------- */
