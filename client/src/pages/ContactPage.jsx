@@ -2,6 +2,7 @@ import "../styling/content-pages.css";
 import PageMeta from "../components/seo/PageMeta";
 import Reveal from "../components/ui/common/Reveal";
 import ContactDetails from "../components/ui/common/ContactDetails";
+import ContactForm from "../components/ui/forms/ContactForm";
 import { locality } from "../config/site";
 
 export default function ContactPage() {
@@ -27,8 +28,12 @@ export default function ContactPage() {
             <p>Job seekers and employers go to different inboxes so the right person answers first.</p>
             <ContactDetails />
           </Reveal>
-          <Reveal delay={80}>
-            {/* contact form lands here */}
+          <Reveal delay={80} className="cx-form-wrap" aria-labelledby="form-title" as="section">
+            <div className="cx-prose" style={{ marginBottom: "var(--sp-5)" }}>
+              <h2 id="form-title">Or leave your details</h2>
+              <p>A few lines is enough. We'll reply by email, usually within a working day.</p>
+            </div>
+            <ContactForm />
           </Reveal>
         </div>
       </section>
