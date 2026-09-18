@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import '../../../styling/Footer.css';
 import { ReactComponent as Logo } from '../../../assets/logos/logo.svg';
+import { emailRecruits, phoneDisplay, phoneE164 } from '../../../config/site';
 
 export default function Footer() {
   return (
@@ -20,13 +21,11 @@ export default function Footer() {
           <div className="footer__contact">
             <p>
               Email:{' '}
-              <a href="mailto:recruits@breakwatersrecruiting.co.za">
-                recruits@breakwatersrecruiting.co.za
-              </a>
+              <a href={`mailto:${emailRecruits}`}>{emailRecruits}</a>
             </p>
             <p>
               Phone:{' '}
-              <a href="tel:+27823703603">082 370 3603</a>
+              <a href={`tel:${phoneE164}`}>{phoneDisplay}</a>
             </p>
             <p>LinkedIn: Breakwaters Recruiting</p>
           </div>

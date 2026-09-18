@@ -3,6 +3,7 @@ import AppCardNav from "../components/ui/layout/AppCardNav";
 import Footer from "../components/ui/layout/Footer";
 import PageMeta from "../components/seo/PageMeta";
 import Reveal from "../components/ui/common/Reveal";
+import { emailRecruits, emailVanessa, phoneDisplay, phoneE164, siteUrl } from "../config/site";
 
 const ROUTING_ROWS = [
   {
@@ -10,9 +11,7 @@ const ROUTING_ROWS = [
     content: (
       <p>
         Email{" "}
-        <a href="mailto:recruits@breakwatersrecruiting.co.za">
-          recruits@breakwatersrecruiting.co.za
-        </a>{" "}
+        <a href={`mailto:${emailRecruits}`}>{emailRecruits}</a>{" "}
         to get started in your job search.
       </p>
     ),
@@ -22,9 +21,7 @@ const ROUTING_ROWS = [
     content: (
       <p>
         Email{" "}
-        <a href="mailto:vanessa@breakwatersrecruiting.co.za">
-          vanessa@breakwatersrecruiting.co.za
-        </a>{" "}
+        <a href={`mailto:${emailVanessa}`}>{emailVanessa}</a>{" "}
         to enquire about us finding you talent.
       </p>
     ),
@@ -36,13 +33,9 @@ const CONTACT_ROWS = [
     label: "Email",
     content: (
       <p>
-        <a href="mailto:vanessa@breakwatersrecruiting.co.za">
-          vanessa@breakwatersrecruiting.co.za
-        </a>
+        <a href={`mailto:${emailVanessa}`}>{emailVanessa}</a>
         <br />
-        <a href="mailto:recruits@breakwatersrecruiting.co.za">
-          recruits@breakwatersrecruiting.co.za
-        </a>
+        <a href={`mailto:${emailRecruits}`}>{emailRecruits}</a>
       </p>
     ),
   },
@@ -50,7 +43,7 @@ const CONTACT_ROWS = [
     label: "Phone",
     content: (
       <p>
-        <a href="tel:+27823703603">082 370 3603</a>
+        <a href={`tel:${phoneE164}`}>{phoneDisplay}</a>
       </p>
     ),
   },
@@ -66,7 +59,7 @@ export default function ContactPage() {
       <PageMeta
         title="Contact Us | Breakwaters Recruiting"
         description="Get in touch with Breakwaters Recruiting by email or phone, we'd love to hear from you."
-        canonical="https://breakwatersrecruiting.co.za/contact"
+        canonical={`${siteUrl}/contact`}
       />
       <AppCardNav />
 

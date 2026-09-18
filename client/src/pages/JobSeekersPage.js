@@ -3,8 +3,9 @@ import AppCardNav from "../components/ui/layout/AppCardNav";
 import Footer from "../components/ui/layout/Footer";
 import PageMeta from "../components/seo/PageMeta";
 import Reveal from "../components/ui/common/Reveal";
+import { emailRecruits, siteUrl } from "../config/site";
 
-const CV_EMAIL = "mailto:recruits@breakwatersrecruiting.co.za";
+const CV_EMAIL = `mailto:${emailRecruits}`;
 
 const EXPECTATIONS = [
   "A supportive, human approach",
@@ -19,7 +20,7 @@ export default function JobSeekersPage() {
       <PageMeta
         title="For Job Seekers | Breakwaters Recruiting"
         description="Breakwaters Recruiting takes a personal approach to job hunting. Honest communication, guidance, and opportunities that actually fit your goals."
-        canonical="https://breakwatersrecruiting.co.za/job-seekers"
+        canonical={`${siteUrl}/job-seekers`}
       />
       <AppCardNav />
 
@@ -34,7 +35,7 @@ export default function JobSeekersPage() {
           <p className="cx-lede">
             To get started, email{" "}
             <a href={CV_EMAIL} style={{ color: "inherit" }}>
-              recruits@breakwatersrecruiting.co.za
+              {emailRecruits}
             </a>{" "}
             and our team will guide you through the process of finding your
             next job.
@@ -71,7 +72,7 @@ export default function JobSeekersPage() {
             </p>
             <div className="cx-cta__actions">
               <a href={CV_EMAIL} className="cx-btn-pill">
-                Email recruits@breakwatersrecruiting.co.za
+                Email {emailRecruits}
               </a>
             </div>
           </div>

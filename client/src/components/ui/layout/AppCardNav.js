@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import CardNav from './CardNav';
 import defaultLogo from '../../../assets/logos/Logo-full.svg';
+import { emailRecruits, phoneE164 } from '../../../config/site';
 
 const defaultItems = [
   {
@@ -27,8 +28,8 @@ const defaultItems = [
     textColor: '#fff',
     links: [
       { label: 'Contact Us', ariaLabel: 'Contact Us', href: '/contact' },
-      { label: 'Email', ariaLabel: 'Email us', href: 'mailto:recruits@breakwatersrecruiting.co.za' },
-      { label: 'Phone', ariaLabel: 'Call us', href: 'tel:+27823703603' }
+      { label: 'Email', ariaLabel: 'Email us', href: `mailto:${emailRecruits}` },
+      { label: 'Phone', ariaLabel: 'Call us', href: `tel:${phoneE164}` }
     ]
   }
 ];

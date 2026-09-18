@@ -5,8 +5,9 @@ import Footer from "../components/ui/layout/Footer";
 import PageMeta from "../components/seo/PageMeta";
 import Reveal from "../components/ui/common/Reveal";
 import ImagePlaceholder from "../components/ui/common/ImagePlaceholder";
+import { emailRecruits, siteUrl } from "../config/site";
 
-const CONTACT_EMAIL = "mailto:recruits@breakwatersrecruiting.co.za";
+const CONTACT_EMAIL = `mailto:${emailRecruits}`;
 
 const STORY_PARAGRAPHS = [
   "Breakwaters Recruiting was built from real life experience, both the highs and the unexpected lows.",
@@ -45,7 +46,7 @@ export default function AboutUsPage() {
       <PageMeta
         title="About Breakwaters Recruiting | People-First Hiring Studio"
         description="Meet Breakwaters Recruiting: a human-centered recruitment business founded by Vanessa Boucher, built on care, resilience, and genuine connection."
-        canonical="https://breakwatersrecruiting.co.za/about"
+        canonical={`${siteUrl}/about`}
       />
       <AppCardNav />
       <MissionSection

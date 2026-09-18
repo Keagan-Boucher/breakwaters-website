@@ -5,6 +5,7 @@ import AppCardNav from "../components/ui/layout/AppCardNav";
 import heroWave from "../assets/svgs/Hero-wave.svg";
 import Footer from "../components/ui/layout/Footer";
 import PageMeta from "../components/seo/PageMeta";
+import { siteUrl } from "../config/site";
 
 const HERO_TITLE = "We Break Barriers\nfor your success.";
 const HOW_IT_WORKS_STEPS = [
@@ -66,7 +67,7 @@ export default function HomePage() {
       <PageMeta
         title="Breakwaters Recruiting | Human-Led Talent Matching"
         description="Breakwaters Recruiting connects South African businesses with exceptional, niche talent through a personal, human-centered recruitment process."
-        canonical="https://breakwatersrecruiting.co.za/"
+        canonical={`${siteUrl}/`}
       />
       <section className="hero-section noise">
         <div className="hero-content">

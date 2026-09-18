@@ -3,8 +3,9 @@ import AppCardNav from "../components/ui/layout/AppCardNav";
 import Footer from "../components/ui/layout/Footer";
 import PageMeta from "../components/seo/PageMeta";
 import Reveal from "../components/ui/common/Reveal";
+import { emailVanessa, siteUrl } from "../config/site";
 
-const ENQUIRE_EMAIL = "mailto:vanessa@breakwatersrecruiting.co.za";
+const ENQUIRE_EMAIL = `mailto:${emailVanessa}`;
 
 const APPROACH_ITEMS = [
   "We take the time to understand your business",
@@ -43,7 +44,7 @@ export default function ServicesPage() {
       <PageMeta
         title="Services | Breakwaters Recruiting"
         description="Talent acquisition, specialist IT recruitment, workforce solutions, and payroll outsourcing from Breakwaters Recruiting, practical, flexible, and built around your needs."
-        canonical="https://breakwatersrecruiting.co.za/services"
+        canonical={`${siteUrl}/services`}
       />
       <AppCardNav />
 
@@ -58,7 +59,7 @@ export default function ServicesPage() {
           <p className="cx-lede">
             Looking for talent? Email{" "}
             <a href={ENQUIRE_EMAIL} style={{ color: "inherit" }}>
-              vanessa@breakwatersrecruiting.co.za
+              {emailVanessa}
             </a>{" "}
             to enquire about Breakwaters finding you talent.
           </p>
@@ -115,7 +116,7 @@ export default function ServicesPage() {
             </p>
             <div className="cx-cta__actions">
               <a href={ENQUIRE_EMAIL} className="cx-btn-pill">
-                Email vanessa@breakwatersrecruiting.co.za
+                Email {emailVanessa}
               </a>
             </div>
           </div>
