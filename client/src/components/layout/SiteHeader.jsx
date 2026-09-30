@@ -6,7 +6,7 @@ import "../../styling/header.css";
 const NAV = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
-  { to: "/services", label: "Services" },
+  { to: "/services", label: "Solutions" },
   { to: "/job-seekers", label: "Job seekers" },
   { to: "/contact", label: "Contact" },
 ];
@@ -49,8 +49,9 @@ export default function SiteHeader() {
   return (
     <header className={`site-header${open ? " site-header--open" : ""}`}>
       <div className="container site-header__bar">
-        <Link to="/" className="site-header__brand" aria-label="Breakwaters Recruiting home">
+        <Link to="/" className="site-header__brand" aria-label="Breakwaters Recruiting, People and Talent Solutions. Home">
           <img src={logoFull} alt="" width="648" height="153" />
+          <span className="site-header__tagline">People &amp; Talent Solutions</span>
         </Link>
 
         <nav className="site-header__nav" aria-label="Primary" ref={panelRef} id={panelId}>

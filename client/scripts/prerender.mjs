@@ -20,7 +20,7 @@ const jsonLd = (obj) => `<script type="application/ld+json">${JSON.stringify(obj
 // TODO in config/site.js are left out instead of shipped empty.
 const ORG = `${siteUrl}/#organization`;
 const FOUNDER = `${siteUrl}/#founder`;
-const SERVICES = ["Talent acquisition", "SAP recruitment", "Oracle recruitment", "IT recruitment", "Executive search", "Staff augmentation", "Payroll outsourcing"];
+const SERVICES = ["Talent acquisition", "SAP recruitment", "Oracle recruitment", "IT recruitment", "Payroll outsourcing", "Workforce solutions", "Coaching and development", "Change management"];
 const graph = [
   {
     "@type": "EmploymentAgency",
@@ -29,7 +29,7 @@ const graph = [
     url: `${siteUrl}/`,
     logo: `${siteUrl}/logo-512.png`,
     image: `${siteUrl}/og-image.png`,
-    description: "Human-led recruitment agency in Johannesburg connecting South African businesses with SAP, Oracle and IT talent.",
+    description: "People and talent solutions for South African businesses: talent acquisition, payroll outsourcing, coaching and development, and change management, with specialist SAP, Oracle and IT recruitment.",
     email: site.emailVanessa,
     ...(site.whatsappE164 && { telephone: `+${site.whatsappE164}` }),
     address: { "@type": "PostalAddress", addressLocality: site.locality, addressRegion: site.region, addressCountry: site.country },
@@ -94,13 +94,26 @@ function head(path, meta) {
   if (!meta.noindex) tags.push(`<link rel="canonical" href="${url}" />`, `<meta property="og:url" content="${url}" />`);
   tags.push(siteLd);
   if (routeLd[path]) tags.push(routeLd[path]);
+  if (meta.service) {
+    tags.push(jsonLd({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: meta.service,
+      serviceType: meta.service,
+      description: meta.description,
+      url,
+      provider: { "@id": ORG },
+      areaServed: { "@type": "Country", name: "South Africa" },
+    }));
+  }
   if (meta.breadcrumb) {
     const ld = {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: siteName, item: `${siteUrl}/` },
-        { "@type": "ListItem", position: 2, name: meta.breadcrumb, item: url },
+        ...(meta.parent ? [{ "@type": "ListItem", position: 2, name: ROUTES[meta.parent].breadcrumb, item: `${siteUrl}${meta.parent}` }] : []),
+        { "@type": "ListItem", position: meta.parent ? 3 : 2, name: meta.breadcrumb, item: url },
       ],
     };
     tags.push(jsonLd(ld));

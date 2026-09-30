@@ -1,16 +1,19 @@
+import { SOLUTIONS, solutionPath } from "../config/solutions.js";
+
 // Per-route metadata. Used by <PageMeta> at runtime and by scripts/prerender.mjs
 // at build time, so both paths emit identical tags.
+// `parent` adds a middle breadcrumb; `service` makes prerender emit Service JSON-LD.
 export const ROUTES = {
   "/": {
-    title: "Breakwaters Recruiting | Recruitment Agency, South Africa",
+    title: "People & Talent Solutions South Africa | Breakwaters Recruiting",
     description:
-      "Human-led recruitment agency in Johannesburg connecting South African businesses with SAP, Oracle and IT talent, and job seekers with roles that actually fit.",
+      "People & talent solutions for South African businesses: talent acquisition, payroll outsourcing, coaching and change management, from Johannesburg. Specialist SAP, Oracle and IT recruitment.",
   },
   "/services": {
-    title: "Talent Acquisition & IT Recruitment Services | Breakwaters",
+    title: "People & Talent Solutions | Breakwaters Recruiting",
     description:
-      "Talent acquisition, executive search, staff augmentation and payroll outsourcing for South African businesses, with specialist SAP, Oracle and IT recruitment.",
-    breadcrumb: "Services",
+      "Talent acquisition, payroll outsourcing, coaching and development, and change management for South African businesses. Practical people solutions built around your business.",
+    breadcrumb: "Solutions",
   },
   "/job-seekers": {
     title: "SAP, Oracle & IT Jobs South Africa | Breakwaters Recruiting",
@@ -21,7 +24,7 @@ export const ROUTES = {
   "/about": {
     title: "About Vanessa Boucher & Breakwaters Recruiting",
     description:
-      "Founded by Vanessa Boucher after nearly two decades in IT consulting, Breakwaters Recruiting is built on care, resilience and genuine connection. Our story.",
+      "Founded by Vanessa Boucher after nearly two decades in IT, Breakwaters is a people and talent business built on care, resilience and genuine connection. Our story.",
     breadcrumb: "About",
   },
   "/contact": {
@@ -42,6 +45,12 @@ export const ROUTES = {
       "The terms that apply when you use the Breakwaters Recruiting website or contact us through it.",
     breadcrumb: "Terms and conditions",
   },
+  ...Object.fromEntries(
+    SOLUTIONS.map((x) => [
+      solutionPath(x.slug),
+      { title: x.metaTitle, description: x.metaDescription, breadcrumb: x.title, parent: "/services", service: x.title },
+    ]),
+  ),
   // Rendered for any unknown path. No canonical, not in the sitemap.
   "/404": {
     title: "Page not found | Breakwaters Recruiting",

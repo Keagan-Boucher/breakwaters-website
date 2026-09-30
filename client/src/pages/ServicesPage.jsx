@@ -1,40 +1,10 @@
 import { Link } from "react-router-dom";
-import { FiCheck } from "react-icons/fi";
+import { FiArrowRight } from "react-icons/fi";
 import "../styling/content-pages.css";
 import PageMeta from "../components/seo/PageMeta";
 import Reveal from "../components/ui/common/Reveal";
+import { SOLUTIONS, JOURNEY, solutionPath } from "../config/solutions";
 import { emailVanessa } from "../config/site";
-
-// Order matters: the first service is the feature cell of the bento.
-const SERVICES = [
-  {
-    title: "Talent acquisition",
-    intro: "Whether you're growing a team or filling a critical gap.",
-    tags: ["Permanent placements", "Contract placements", "Executive search and headhunting", "Staff augmentation"],
-    outro: "We look for the right fit, not just the right skills.",
-  },
-  {
-    title: "Specialist IT recruitment",
-    intro: "With roots in IT consulting, we know what good looks like.",
-    tags: ["SAP", "Oracle", "Full-stack development", "IT architects", "Project management and functional roles"],
-  },
-  {
-    title: "Workforce solutions",
-    intro: "Plan ahead and stay agile.",
-    tags: ["Capacity planning", "Permanent and contract balance", "Talent pipeline"],
-  },
-  {
-    title: "Payroll outsourcing",
-    outro: "Managing contractors is time-consuming. Our payroll solution takes the admin off your desk so you can focus on the business.",
-  },
-];
-
-const APPROACH = [
-  "We take the time to understand your business",
-  "We connect you with quality, trusted talent",
-  "We work within your budget, not against it",
-  "We build relationships that last",
-];
 
 export default function ServicesPage() {
   return (
@@ -43,40 +13,83 @@ export default function ServicesPage() {
 
       <header className="cx-header surface-cream">
         <div className="container container--narrow cx-header__inner">
-          <h1>Recruitment and workforce services</h1>
+          <h1>People &amp; Talent Solutions</h1>
           <p className="cx-lede">
-            Talent acquisition, specialist IT recruitment, workforce planning and payroll outsourcing for
-            South African businesses. Practical, flexible and built around your needs.
+            Practical people solutions, built around your business. From finding specialist talent and managing your
+            workforce to developing people and navigating organisational change.
           </p>
         </div>
       </header>
 
-      <section className="cx-section" aria-labelledby="services-title">
+      <section className="cx-section" aria-labelledby="intro-title">
+        <div className="container container--narrow cx-prose">
+          <Reveal>
+            <h2 id="intro-title">Turn people challenges into practical business solutions</h2>
+            <p>
+              We don't believe in one-size-fits-all solutions. We take the time to understand your business, your
+              people, your challenges and your goals, and then work with you to find the right approach.
+            </p>
+            <p>
+              Whether you need to strengthen your team, simplify workforce administration, build capability or support
+              your people through change, we can help.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="cx-section surface-khaki" aria-labelledby="solutions-title">
         <div className="container">
-          <Reveal className="cx-section__head"><h2 id="services-title">What we do</h2></Reveal>
+          <Reveal className="cx-section__head"><h2 id="solutions-title">What we do</h2></Reveal>
           <Reveal as="ul" className="cx-bento" data-stagger="">
-            {SERVICES.map((s) => (
-              <li key={s.title}>
+            {SOLUTIONS.map((s) => (
+              <li key={s.slug}>
                 <h3>{s.title}</h3>
-                {s.intro && <p>{s.intro}</p>}
-                {s.tags && <ul className="cx-pills">{s.tags.map((t) => <li key={t}>{t}</li>)}</ul>}
-                {s.outro && <p>{s.outro}</p>}
+                <p>{s.headline}</p>
+                <ul className="cx-pills">{s.items.slice(0, 4).map((t) => <li key={t}>{t}</li>)}</ul>
+                <p>
+                  <Link to={solutionPath(s.slug)} className="cx-lane__go">
+                    {s.short} <FiArrowRight aria-hidden="true" />
+                  </Link>
+                </p>
               </li>
             ))}
           </Reveal>
         </div>
       </section>
 
-      <section className="cx-section surface-khaki" aria-labelledby="approach-title">
+      <section className="cx-section" aria-labelledby="approach-title">
         <div className="container container--narrow cx-sticky">
           <Reveal className="cx-sticky__aside">
-            <h2 id="approach-title">Our approach</h2>
+            <h2 id="approach-title">One people partner. Multiple solutions.</h2>
             <p>We do things properly, and with intention.</p>
           </Reveal>
-          <Reveal as="ul" className="cx-grid2" data-stagger="">
-            {APPROACH.map((item) => (
-              <li key={item}><FiCheck aria-hidden="true" /><span>{item}</span></li>
-            ))}
+          <Reveal className="cx-prose" delay={80}>
+            <p>Your people challenges don't always fit neatly into one category.</p>
+            <p>
+              You may need to recruit specialist talent while developing your existing team. You may be implementing new
+              technology while managing the impact on your people. Or you may need additional workforce support while
+              focusing your internal resources on growing the business.
+            </p>
+            <p>
+              That's why Breakwaters brings together talent acquisition, workforce solutions, people development and
+              change management under one people and talent offering. Find talent. Build capability. Support change.
+            </p>
+            <p>We can support you with a single requirement or work with you across multiple people challenges as your business evolves.</p>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="cx-section surface-cream" aria-labelledby="journey-title">
+        <div className="container container--narrow cx-prose">
+          <Reveal>
+            <h2 id="journey-title">From talent to transformation</h2>
+            <p>
+              Your people journey doesn't start when you make a job requisition, and it doesn't end when someone is hired.
+              Breakwaters can support different points along that journey, depending on what your business needs.
+            </p>
+            <ol className="cx-pills" aria-label="The people journey">
+              {JOURNEY.map((j) => <li key={j}>{j}</li>)}
+            </ol>
           </Reveal>
         </div>
       </section>
@@ -84,10 +97,10 @@ export default function ServicesPage() {
       <section className="cx-section surface-navy" aria-labelledby="cta-title">
         <div className="container">
           <Reveal className="cx-cta">
-            <h2 id="cta-title">Let's find your next hire</h2>
-            <p>Tell Vanessa about the role and we'll come back with a plan.</p>
+            <h2 id="cta-title">Let's talk</h2>
+            <p>Have a people challenge you're trying to solve? You don't need to have the answer before you contact us.</p>
             <div className="cx-cta__actions">
-              <Link to="/contact" className="btn btn--primary">Get in touch</Link>
+              <Link to="/contact" className="btn btn--primary">Let's start a conversation</Link>
               <a href={`mailto:${emailVanessa}`} className="btn btn--secondary">Email {emailVanessa}</a>
             </div>
           </Reveal>

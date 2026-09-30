@@ -9,8 +9,8 @@ const prerenderedRoutes = {
   name: "prerendered-routes",
   configurePreviewServer(server) {
     server.middlewares.use((req, res, next) => {
-      if (/^\/[a-z0-9-]+$/.test(req.url)) req.url += "/";
-      if (/^\/[a-z0-9-]+\/?$/.test(req.url) && !existsSync(join("build", req.url, "index.html"))) {
+      if (/^\/[a-z0-9-]+(\/[a-z0-9-]+)?$/.test(req.url)) req.url += "/";
+      if (/^\/[a-z0-9-]+(\/[a-z0-9-]+)?\/?$/.test(req.url) && !existsSync(join("build", req.url, "index.html"))) {
         res.writeHead(404, { "Content-Type": "text/html" });
         return res.end(readFileSync(join("build", "404", "index.html")));
       }

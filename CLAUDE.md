@@ -37,7 +37,8 @@ contact form. Nothing else runs server-side.
   (display) + Roboto (body), self-hosted variable woff2 in
   `src/assets/fonts/`.
 - Routes are `/`, `/about`, `/services`, `/job-seekers`, `/contact`, plus
-  `/privacy` and `/terms` (generic legal pages, `pages/LegalPages.jsx`). They are
+  four solution pages `/services/<slug>` (data in `src/config/solutions.js`,
+  the one place to edit their copy), `/privacy` and `/terms` (generic legal pages, `pages/LegalPages.jsx`). They are
   indexed and in `sitemap.xml`. Don't rename.
 - Logo files `src/assets/logos/Logo-full.svg` (header) and the inline
   `LogoMark.jsx` (footer/icons) are used as-is.

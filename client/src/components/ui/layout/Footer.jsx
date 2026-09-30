@@ -3,6 +3,7 @@ import { FaLinkedinIn, FaFacebookF } from "react-icons/fa6";
 import "../../../styling/Footer.css";
 import Logo from "../common/LogoMark";
 import { emailVanessa, linkedinUrl, facebookUrl, locality, region } from "../../../config/site";
+import { SOLUTIONS, solutionPath } from "../../../config/solutions";
 
 const SOCIALS = [
   { name: "LinkedIn", url: linkedinUrl, Icon: FaLinkedinIn },
@@ -16,16 +17,23 @@ export default function Footer() {
         <div className="footer__top">
           <div className="footer__brand">
             <Logo />
-            <p>Human-led recruitment for SAP, Oracle and IT teams. {locality}, {region}.</p>
+            <p><strong>People &amp; Talent Solutions</strong></p>
+            <p>Talent Acquisition | Payroll Outsourcing | Coaching | Change Management</p>
+            <p>{locality}, {region}.</p>
           </div>
 
           <nav aria-label="Footer">
             <ul className="footer__links">
               <li><Link to="/">Home</Link></li>
               <li><Link to="/about">About</Link></li>
-              <li><Link to="/services">Services</Link></li>
+              <li><Link to="/services">Solutions</Link></li>
               <li><Link to="/job-seekers">Job seekers</Link></li>
               <li><Link to="/contact">Contact</Link></li>
+            </ul>
+            <ul className="footer__links" style={{ marginTop: "var(--sp-3)" }}>
+              {SOLUTIONS.map((s) => (
+                <li key={s.slug}><Link to={solutionPath(s.slug)}>{s.short}</Link></li>
+              ))}
             </ul>
           </nav>
 
