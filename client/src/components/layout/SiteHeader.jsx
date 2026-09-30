@@ -49,9 +49,8 @@ export default function SiteHeader() {
   return (
     <header className={`site-header${open ? " site-header--open" : ""}`}>
       <div className="container site-header__bar">
-        <Link to="/" className="site-header__brand" aria-label="Breakwaters Recruiting, People and Talent Solutions. Home">
+        <Link to="/" className="site-header__brand" aria-label="Breakwaters Recruiting home">
           <img src={logoFull} alt="" width="648" height="153" />
-          <span className="site-header__tagline">People &amp; Talent Solutions</span>
         </Link>
 
         <nav className="site-header__nav" aria-label="Primary" ref={panelRef} id={panelId}>

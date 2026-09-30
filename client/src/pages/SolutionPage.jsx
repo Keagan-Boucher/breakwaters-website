@@ -11,14 +11,14 @@ export default function SolutionPage() {
   const { slug } = useParams();
   const solution = SOLUTIONS.find((s) => s.slug === slug);
   if (!solution) return <NotFoundPage />;
-  const { title, headline, lede, body, listTitle, items, outro } = solution;
+  const { title, headline, lede, body, listTitle, items, outro, surface, listStyle } = solution;
   const path = solutionPath(slug);
 
   return (
     <>
       <PageMeta path={path} />
 
-      <header className="cx-header surface-cream">
+      <header className={`cx-header surface-${surface}`}>
         <div className="container container--narrow cx-header__inner">
           <p><Link to="/services">People &amp; Talent Solutions</Link></p>
           <h1>{title}</h1>
@@ -37,14 +37,26 @@ export default function SolutionPage() {
         </div>
       </section>
 
-      <section className="cx-section surface-khaki" aria-labelledby="list-title">
+      <section className={`cx-section surface-${surface === "khaki" ? "cream" : "khaki"}`} aria-labelledby="list-title">
         <div className="container container--narrow">
           <Reveal className="cx-section__head"><h2 id="list-title">{listTitle}</h2></Reveal>
-          <Reveal as="ul" className="cx-grid2" data-stagger="">
-            {items.map((item) => (
-              <li key={item}><FiCheck aria-hidden="true" /><span>{item}</span></li>
-            ))}
-          </Reveal>
+          {listStyle === "pills" && (
+            <Reveal as="ul" className="cx-pills" data-stagger="">
+              {items.map((item) => <li key={item}>{item}</li>)}
+            </Reveal>
+          )}
+          {listStyle === "steps" && (
+            <Reveal as="ol" className="cx-steps" data-stagger="">
+              {items.map((item) => <li className="cx-step" key={item}><h3>{item}</h3></li>)}
+            </Reveal>
+          )}
+          {(listStyle === "checks" || listStyle === "columns") && (
+            <Reveal as="ul" className="cx-grid2" data-stagger="">
+              {items.map((item) => (
+                <li key={item}>{listStyle === "checks" && <FiCheck aria-hidden="true" />}<span>{item}</span></li>
+              ))}
+            </Reveal>
+          )}
           <Reveal className="cx-prose" delay={80}>
             <p style={{ marginTop: "var(--sp-6)" }}>{outro}</p>
           </Reveal>

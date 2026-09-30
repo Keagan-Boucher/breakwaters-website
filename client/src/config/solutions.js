@@ -3,6 +3,8 @@
 export const SOLUTIONS = [
   {
     slug: "talent-acquisition",
+    surface: "cream", // header colour band
+    listStyle: "pills", // how the list is drawn: pills | checks | steps | columns
     title: "Talent Acquisition",
     short: "Talent Acquisition",
     blurb: "Finding the right people for your business",
@@ -30,6 +32,8 @@ export const SOLUTIONS = [
   },
   {
     slug: "workforce-payroll",
+    surface: "khaki", // header colour band
+    listStyle: "checks", // how the list is drawn: pills | checks | steps | columns
     title: "Workforce & Payroll Solutions",
     short: "Payroll Outsourcing",
     blurb: "Taking the complexity out of payroll",
@@ -55,6 +59,8 @@ export const SOLUTIONS = [
   },
   {
     slug: "coaching-development",
+    surface: "navy", // header colour band
+    listStyle: "steps", // how the list is drawn: pills | checks | steps | columns
     title: "Coaching & Development",
     short: "Coaching & Development",
     blurb: "Helping people and leaders perform and grow",
@@ -82,6 +88,8 @@ export const SOLUTIONS = [
   },
   {
     slug: "change-management",
+    surface: "cream", // header colour band
+    listStyle: "columns", // how the list is drawn: pills | checks | steps | columns
     title: "Change Management",
     short: "Change Management",
     blurb: "Helping organisations navigate change successfully",
